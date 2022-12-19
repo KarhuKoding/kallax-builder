@@ -1,5 +1,4 @@
 import React, { useLayoutEffect, useRef } from "react";
-
 import { scrollStore } from "../../store/store";
 import {
   SideBoardLeft,
@@ -21,13 +20,18 @@ export default function Shelf() {
   const middleBoard2 = useRef(null);
   const middleBoard3 = useRef(null);
 
-  const { scrollFactor } = scrollStore();
+  const { sf1, sf2 } = scrollStore();
 
   useLayoutEffect(() => {
-    const rotation = lerp(Math.PI / 2, 0, scrollFactor);
-    console.log("rotation", rotation);
-    sideBoardLeft.current.rotation.y = rotation;
-  }, [scrollFactor]);
+    const sf1Interpolated = lerp(0, Math.PI / 2, sf1);
+    const sf2Interpolated = lerp(0, Math.PI / 2, sf2);
+
+    sideBoardLeft.current.rotation.y = sf1Interpolated;
+    sideBoardRight.current.rotation.y = -sf1Interpolated;
+
+    topBoardTop.current.rotation.x = sf2Interpolated;
+    topBoardBottom.current.rotation.x = -sf2Interpolated;
+  }, [sf1, sf2]);
 
   return (
     <>

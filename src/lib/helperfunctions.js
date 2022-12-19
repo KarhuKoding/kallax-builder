@@ -1,3 +1,8 @@
+// own
+export const roundNumber = (number) => {
+  return Math.floor(number * 100) / 100;
+};
+
 // source: https://github.com/mrdoob/three.js/blob/master/src/math/MathUtils.js
 
 const _lut = [
