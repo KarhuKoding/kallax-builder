@@ -11,6 +11,8 @@ import {
 } from "./Boards";
 import { lerp } from "../../lib/helperfunctions";
 
+const ninetyDeg = Math.PI / 2;
+
 export default function Shelf() {
   const sideBoardLeft = useRef(null);
   const sideBoardRight = useRef(null);
@@ -20,13 +22,16 @@ export default function Shelf() {
   const middleBoard2 = useRef(null);
   const middleBoard3 = useRef(null);
 
-  const { sf1, sf2, sf3, sf4 } = scrollStore();
+  const shelf = useRef(null);
+
+  const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
 
   useLayoutEffect(() => {
-    const sf1Interpolated = lerp(0, Math.PI / 2, sf1);
-    const sf2Interpolated = lerp(Math.PI / 2, 0, sf2);
+    const sf1Interpolated = lerp(0, ninetyDeg, sf1);
+    const sf2Interpolated = lerp(ninetyDeg, 0, sf2);
     const sf3Interpolated = lerp(0.5, 0.18, sf3);
     const sf4Interpolated = lerp(1, 0.7, sf4);
+    const sf5Interpolated = lerp(0, ninetyDeg, sf5);
 
     // Rotation
     sideBoardLeft.current.rotation.y = sf1Interpolated;
@@ -35,17 +40,18 @@ export default function Shelf() {
     topBoardTop.current.rotation.x = sf2Interpolated;
     topBoardBottom.current.rotation.x = -sf2Interpolated;
 
+    shelf.current.rotation.x = sf5Interpolated;
+
     // Location
     sideBoardLeft.current.position.x = sf3Interpolated;
     sideBoardRight.current.position.x = -sf3Interpolated;
 
     topBoardTop.current.position.z = sf4Interpolated;
     topBoardBottom.current.position.z = -sf4Interpolated;
-
-  }, [sf1, sf2, sf3, sf4]);
+  }, [sf1, sf2, sf3, sf4, sf5]);
 
   return (
-    <>
+    <group dispose={null} rotation={[ninetyDeg, 0, 0]} ref={shelf}>
       <SideBoardLeft ref={sideBoardLeft} />
       <SideBoardRight ref={sideBoardRight} />
       <TopBoardTop ref={topBoardTop} />
@@ -53,6 +59,6 @@ export default function Shelf() {
       <MiddleBoard1 ref={middleBoard1} />
       <MiddleBoard2 ref={middleBoard2} />
       <MiddleBoard3 ref={middleBoard3} />
-    </>
+    </group>
   );
 }

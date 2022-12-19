@@ -14,7 +14,7 @@ export default function App() {
       <Canvas>
         <ScrollListener>
           {/* Ground Plane */}
-          <Plane rotation={[-Math.PI / 2, 0, 0]} args={[10, 10]}></Plane>
+          {/* <Plane rotation={[-Math.PI / 2, 0, 0]} args={[10, 10]}></Plane> */}
           {/* Boards */}
           <Shelf />
 

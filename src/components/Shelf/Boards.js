@@ -31,19 +31,19 @@ const TopBoardBottom = forwardRef((props, ref) => (
 
 // // 3x Middle
 const MiddleBoard1 = forwardRef((props, ref) => (
-  <mesh position={[0, middle.height / 2, -0.33]} rotation={[0, 0, 0]} ref={ref}>
+  <mesh position={[0, 0, -0.33]} rotation={[0, 0, 0]} ref={ref}>
     {createBox(middle.width, middle.height, middle.depth, "lime")}
   </mesh>
 ));
 
 const MiddleBoard2 = forwardRef((props, ref) => (
-  <mesh position={[0, middle.height / 2, 0]} rotation={[0, 0, 0]} ref={ref}>
+  <mesh position={[0, 0, 0]} rotation={[0, 0, 0]} ref={ref}>
     {createBox(middle.width, middle.height, middle.depth, "lime")}
   </mesh>
 ));
 
 const MiddleBoard3 = forwardRef((props, ref) => (
-  <mesh position={[0, middle.height / 2, 0.33]} rotation={[0, 0, 0]} ref={ref}>
+  <mesh position={[0, 0, 0.33]} rotation={[0, 0, 0]} ref={ref}>
     {createBox(middle.width, middle.height, middle.depth, "lime")}
   </mesh>
 ));
