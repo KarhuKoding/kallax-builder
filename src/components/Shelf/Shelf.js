@@ -20,18 +20,29 @@ export default function Shelf() {
   const middleBoard2 = useRef(null);
   const middleBoard3 = useRef(null);
 
-  const { sf1, sf2 } = scrollStore();
+  const { sf1, sf2, sf3, sf4 } = scrollStore();
 
   useLayoutEffect(() => {
     const sf1Interpolated = lerp(0, Math.PI / 2, sf1);
-    const sf2Interpolated = lerp(0, Math.PI / 2, sf2);
+    const sf2Interpolated = lerp(Math.PI / 2, 0, sf2);
+    const sf3Interpolated = lerp(0.5, 0.18, sf3);
+    const sf4Interpolated = lerp(1, 0.7, sf4);
 
+    // Rotation
     sideBoardLeft.current.rotation.y = sf1Interpolated;
     sideBoardRight.current.rotation.y = -sf1Interpolated;
 
     topBoardTop.current.rotation.x = sf2Interpolated;
     topBoardBottom.current.rotation.x = -sf2Interpolated;
-  }, [sf1, sf2]);
+
+    // Location
+    sideBoardLeft.current.position.x = sf3Interpolated;
+    sideBoardRight.current.position.x = -sf3Interpolated;
+
+    topBoardTop.current.position.z = sf4Interpolated;
+    topBoardBottom.current.position.z = -sf4Interpolated;
+
+  }, [sf1, sf2, sf3, sf4]);
 
   return (
     <>
