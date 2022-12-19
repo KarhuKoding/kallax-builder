@@ -15,11 +15,11 @@ export default function ScrollListener({ children }) {
 
 function FetchScrollData() {
   const scroll = useScroll();
-  const { setRoation } = scrollStore();
+  const { setScrollFactor } = scrollStore();
 
   useFrame(() => {
     const offset = scroll.offset;
-    setRoation(offset);
+    setScrollFactor(offset);
   });
   return null;
 }

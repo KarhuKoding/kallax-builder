@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import React from "react";
 
 // Components
-import Boards from "./components/Boards";
+import Shelf from "./components/Shelf/Shelf";
 import ScrollListener from "./lib/ScrollListener";
 
 import "./styles.css";
@@ -16,10 +16,10 @@ export default function App() {
           {/* Ground Plane */}
           <Plane rotation={[-Math.PI / 2, 0, 0]} args={[10, 10]}></Plane>
           {/* Boards */}
-          <Boards />
+          <Shelf />
 
           <ambientLight args={[0xff0000]} intensity={0.1} />
-          {/* <OrbitControls makeDefault /> */}
+          <OrbitControls enableZoom={false} />
         </ScrollListener>
       </Canvas>
     </div>

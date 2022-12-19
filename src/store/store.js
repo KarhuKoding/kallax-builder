@@ -5,6 +5,7 @@ const roundNumber = (number) => {
 };
 
 export const scrollStore = create((set) => ({
-  rotation: 0,
-  setRoation: (rotation) => set(() => ({ rotation: roundNumber(rotation) })),
+  scrollFactor: 0,
+  setScrollFactor: (offset) =>
+    set(() => ({ scrollFactor: roundNumber(offset) })),
 }));
