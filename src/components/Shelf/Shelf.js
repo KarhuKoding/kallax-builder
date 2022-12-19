@@ -35,7 +35,7 @@ export default function Shelf() {
     const sf5Interpolated = lerp(0, ninetyDeg, sf5);
 
     // Rotation
-    sideBoardLeft.current.rotation.y = sf1Interpolated;
+    sideBoardLeft.current.rotation.y = -sf1Interpolated;
     sideBoardRight.current.rotation.y = -sf1Interpolated;
 
     topBoardTop.current.rotation.x = sf2Interpolated;
@@ -56,7 +56,7 @@ export default function Shelf() {
       dispose={null}
       rotation={[ninetyDeg, 0, 0]}
       ref={shelf}
-      position={[0, dimensions.side.height / 2, 0]}
+      position={[0, dimensions.side.height , 0]}
     >
       <SideBoardLeft ref={sideBoardLeft} />
       <SideBoardRight ref={sideBoardRight} />

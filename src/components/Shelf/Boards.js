@@ -6,6 +6,7 @@ const { side, top, middle } = dimensions;
 // 2x Side
 const SideBoardLeft = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[0.5, 0, 0]}
     rotation={[Math.PI / 2, 0, 0]}
     ref={ref}
@@ -18,6 +19,7 @@ const SideBoardLeft = forwardRef((props, ref) => (
 
 const SideBoardRight = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[-0.5, 0, 0]}
     rotation={[Math.PI / 2, 0, 0]}
     ref={ref}
@@ -31,6 +33,7 @@ const SideBoardRight = forwardRef((props, ref) => (
 // 2x Top
 const TopBoardTop = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[0, 0, -1]}
     rotation={[Math.PI / 2, 0, 0]}
     ref={ref}
@@ -43,6 +46,7 @@ const TopBoardTop = forwardRef((props, ref) => (
 
 const TopBoardBottom = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[0, 0, 1]}
     rotation={[Math.PI / 2, 0, 0]}
     ref={ref}
@@ -56,6 +60,7 @@ const TopBoardBottom = forwardRef((props, ref) => (
 // // 3x Middle
 const MiddleBoard1 = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[0, 0, -0.33]}
     rotation={[0, 0, 0]}
     ref={ref}
@@ -68,6 +73,7 @@ const MiddleBoard1 = forwardRef((props, ref) => (
 
 const MiddleBoard2 = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[0, 0, 0]}
     rotation={[0, 0, 0]}
     ref={ref}
@@ -80,6 +86,7 @@ const MiddleBoard2 = forwardRef((props, ref) => (
 
 const MiddleBoard3 = forwardRef((props, ref) => (
   <mesh
+    visible={true}
     position={[0, 0, 0.33]}
     rotation={[0, 0, 0]}
     ref={ref}
