@@ -4,12 +4,12 @@ export function createBox(
   depth = 1,
   position = [0, 0, 0],
   rotation = [0, 0, 0],
+  color = "gray"
 ) {
-  console.log("createBox", width, height, depth);
   return (
     <mesh position={position} rotation={rotation}>
       <boxGeometry args={[width, height, depth]} />
-      <meshBasicMaterial color="gray" />
+      <meshBasicMaterial color={color} />
     </mesh>
   );
 }
