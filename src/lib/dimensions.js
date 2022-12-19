@@ -9,8 +9,8 @@ export const dimensions = {
   },
   // 2x Top
   top: {
-    width: 0.39,
-    height: 0.42,
+    width: 0.42,
+    height: 0.39,
     depth,
   },
   // 3x Middle
