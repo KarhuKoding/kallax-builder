@@ -10,6 +10,7 @@ import {
   MiddleBoard3,
 } from "./Boards";
 import { lerp } from "../../lib/helperfunctions";
+import { dimensions } from "../../lib/dimensions";
 
 const ninetyDeg = Math.PI / 2;
 
@@ -51,7 +52,12 @@ export default function Shelf() {
   }, [sf1, sf2, sf3, sf4, sf5]);
 
   return (
-    <group dispose={null} rotation={[ninetyDeg, 0, 0]} ref={shelf}>
+    <group
+      dispose={null}
+      rotation={[ninetyDeg, 0, 0]}
+      ref={shelf}
+      position={[0, dimensions.side.height / 2, 0]}
+    >
       <SideBoardLeft ref={sideBoardLeft} />
       <SideBoardRight ref={sideBoardRight} />
       <TopBoardTop ref={topBoardTop} />
