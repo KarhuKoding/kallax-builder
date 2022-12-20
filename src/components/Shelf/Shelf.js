@@ -11,6 +11,7 @@ import {
 } from "./Boards";
 import { lerp } from "../../lib/helperfunctions";
 import { dimensions } from "../../lib/dimensions";
+import { Center } from "@react-three/drei";
 
 const ninetyDeg = Math.PI / 2;
 

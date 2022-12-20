@@ -11,7 +11,8 @@ const SideBoardLeft = forwardRef((props, ref) => (
     position={[0.5, 0, 0]}
     rotation={[Math.PI / 2, 0, 0]}
     ref={ref}
-    castShadow 
+    castShadow
+    re
   >
     {createBox(side.width, side.height, side.depth)}
   </mesh>
