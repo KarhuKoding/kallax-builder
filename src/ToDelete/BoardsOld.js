@@ -1,6 +1,6 @@
 import { Center } from "@react-three/drei";
 import { forwardRef } from "react";
-import { createBox, dimensions } from "../../lib";
+import { createBox, dimensions } from "../lib";
 
 const { side, top, middle } = dimensions;
 

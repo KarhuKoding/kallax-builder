@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 
 // Components
 // import Shelf from "./components/Shelf/Shelf";
-import Shelf from "./components/Shelf/Shelfnew";
+import Shelf from "./components/Shelf/Shelf";
 import ScrollListener from "./lib/ScrollListener";
 
 import "./styles.css";

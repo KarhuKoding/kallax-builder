@@ -10,7 +10,7 @@ export const SideRight = forwardRef((props, ref) => {
       receiveShadow
       geometry={nodes.SideRight.geometry}
       material={nodes.SideRight.material}
-      position={[0.16, 0, 0]}
+      position={[0.35, 0, 0]} // 0.16 default
       rotation={[0, 0, -Math.PI / 2]}
     />
   );

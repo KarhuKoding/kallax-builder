@@ -1,4 +1,4 @@
-import { dimensions } from "./dimensions";
+import { dimensions } from "../components/ToDelete/dimensions";
 import { createBox } from "./createBox";
 
 export { dimensions, createBox };
