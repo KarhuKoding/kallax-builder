@@ -36,10 +36,10 @@ export default function Shelf() {
     sideBoardLeft.current.rotation.z = sf1Interpolated;
     sideBoardRight.current.rotation.z = -sf1Interpolated;
 
-    // topBoardTop.current.rotation.x = sf2Interpolated;
-    // topBoardBottom.current.rotation.x = -sf2Interpolated;
+    topBoardTop.current.rotation.x = -sf2Interpolated;
+    topBoardBottom.current.rotation.x = sf2Interpolated;
 
-    // shelf.current.rotation.x = sf5Interpolated;
+    shelf.current.rotation.x = sf5Interpolated;
 
     // Location
     // sideBoardLeft.current.position.x = sf3Interpolated;
