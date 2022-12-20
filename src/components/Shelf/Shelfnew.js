@@ -26,15 +26,15 @@ export default function Shelf() {
   const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
 
   useLayoutEffect(() => {
-    const sf1Interpolated = lerp(0, ninetyDeg, sf1);
+    const sf1Interpolated = lerp(ninetyDeg, 0, sf1);
     const sf2Interpolated = lerp(ninetyDeg, 0, sf2);
     const sf3Interpolated = lerp(0.5, 0.18, sf3);
     const sf4Interpolated = lerp(1, 0.7, sf4);
     const sf5Interpolated = lerp(0, ninetyDeg, sf5);
 
     // Rotation
-    // sideBoardLeft.current.rotation.z = sf1Interpolated;
-    // sideBoardRight.current.rotation.z = -sf1Interpolated;
+    sideBoardLeft.current.rotation.z = sf1Interpolated;
+    sideBoardRight.current.rotation.z = -sf1Interpolated;
 
     // topBoardTop.current.rotation.x = sf2Interpolated;
     // topBoardBottom.current.rotation.x = -sf2Interpolated;

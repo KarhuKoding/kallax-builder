@@ -11,6 +11,7 @@ export const SideRight = forwardRef((props, ref) => {
       geometry={nodes.SideRight.geometry}
       material={nodes.SideRight.material}
       position={[0.16, 0, 0]}
+      rotation={[0, 0, -Math.PI / 2]}
     />
   );
 });
