@@ -18,11 +18,11 @@ export default function App() {
             <ScrollListener>
               <Shelf />
 
-              <UI />
+              {/* <UI /> */}
             </ScrollListener>
           </Stage>
         </Suspense>
-        <OrbitControls enableZoom={true} />
+        <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
   );
