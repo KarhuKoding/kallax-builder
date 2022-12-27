@@ -18,7 +18,7 @@ export default function App() {
             <ScrollListener>
               <Shelf />
 
-              {/* <UI /> */}
+              <UI />
             </ScrollListener>
           </Stage>
         </Suspense>

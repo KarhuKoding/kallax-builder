@@ -1,30 +1,19 @@
-import React, { forwardRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useSpring, animated, config } from "@react-spring/three";
+import React, { forwardRef } from "react";
 
 export const SideLeft = forwardRef((props, ref) => {
-  const { nodes, materials } = useGLTF("/SideLeft.glb");
-  const [active, setActive] = useState(false);
+  const { nodes } = useGLTF("/SideLeft.glb");
 
-  const [{position}] = useSpring(
-    () => ({
-      from: { position: [-0.35, 1, 0] },
-      to: { position: [-0.35, 0, 0] },
-      config: config.slow,
-    }),
-    []
-  )
 
   return (
-    <animated.mesh
-      ref={ref}
-      onClick={() => setActive(!active)}
+    <mesh
+      ref={ref}  
       castShadow
       receiveShadow
       geometry={nodes.SideLeft.geometry}
       material={nodes.SideLeft.material}
-      position={position} // -0.16 default
-      rotation={[0, 0, Math.PI / 2]}   
+      position={ [-0.35, 0, 0]} // -0.16 default
+      rotation={[0, 0, Math.PI / 2]}
     />
   );
 });

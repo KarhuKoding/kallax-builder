@@ -2,6 +2,8 @@ import React, { useLayoutEffect, useRef } from "react";
 import { scrollStore } from "../../store/store";
 import { lerp } from "../../lib/helperfunctions";
 import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
+import { useSpring, animated, config } from "@react-spring/three";
+
 
 const ninetyDeg = Math.PI / 2;
 
@@ -15,6 +17,18 @@ export default function Shelf() {
   const shelf = useRef(null);
 
   const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
+
+  const [{ position }] = useSpring(
+    () => ({
+      from: { position: [0, 1, 0] },
+      to: { position: [0, 0, 0] },
+      config: config.slow,
+
+      onRest: () => console.log("done"),
+    }),
+
+    []
+  );
 
   useLayoutEffect(() => {
     const sf1Interpolated = lerp(ninetyDeg, 0, sf1);
@@ -42,8 +56,10 @@ export default function Shelf() {
 
   return (
     <group rotation={[0, 0, 0]} ref={shelf} position={[0, 0, 0]}>
-      <SideLeft ref={sideBoardLeft} />
-      <SideRight ref={sideBoardRight} />
+      <animated.group position={position}>
+        <SideLeft ref={sideBoardLeft} />
+        <SideRight ref={sideBoardRight} />
+      </animated.group>
       <Top ref={topBoardTop} visible={false} />
       <Bottom ref={topBoardBottom} visible={false} />
       <Middle ref={middleBoards} visible={false} />

@@ -13,12 +13,7 @@ export function HighlightLeft(props) {
         position={[-0.549, -0.02, 0]}
         rotation={[0, 0, -Math.PI]}
       >
-    
-        <meshStandardMaterial
-          color={0xff6a00}
-          emissive={"red"}
-          emissiveIntensity={0}
-        ></meshStandardMaterial>
+        <meshBasicMaterial color={"red"} toneMapped={false} />
       </mesh>
     </group>
   );
