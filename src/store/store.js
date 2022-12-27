@@ -20,5 +20,5 @@ export const scrollStore = create((set) => ({
 export const timingStore = create((set) => ({
   intro: false,
 
-  setIntro: () => set(() => ({ intro: true })),
+  setIntro: (bool) => set(() => ({ intro: bool })),
 }));
