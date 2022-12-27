@@ -4,6 +4,7 @@ import { lerp } from "../../lib/helperfunctions";
 import { ninetyDeg } from "../../lib/constants";
 import { ArrowRound } from "./ArrowRound";
 import { Screw } from "./Screw";
+import { HighlightLeft } from "./Hightlight";
 
 export default function Shelf() {
   const arrow1 = useRef(null);
@@ -18,6 +19,7 @@ export default function Shelf() {
 
   return (
     <group>
+      <HighlightLeft></HighlightLeft>
       <ArrowRound position={[-1, 0, 0]} ref={arrow1} />;
       <Screw />;
     </group>

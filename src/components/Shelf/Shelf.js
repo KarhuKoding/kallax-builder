@@ -44,9 +44,9 @@ export default function Shelf() {
     <group rotation={[0, 0, 0]} ref={shelf} position={[0, 0, 0]}>
       <SideLeft ref={sideBoardLeft} />
       <SideRight ref={sideBoardRight} />
-      <Top ref={topBoardTop} />
-      <Bottom ref={topBoardBottom} />
-      <Middle ref={middleBoards} />
+      <Top ref={topBoardTop} visible={false} />
+      <Bottom ref={topBoardBottom} visible={false} />
+      <Middle ref={middleBoards} visible={false} />
     </group>
   );
 }

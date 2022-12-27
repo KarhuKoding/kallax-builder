@@ -22,7 +22,7 @@ export default function App() {
             </ScrollListener>
           </Stage>
         </Suspense>
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={true} />
       </Canvas>
     </div>
   );
