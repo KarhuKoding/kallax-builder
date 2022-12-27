@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { scrollStore } from "../../store/store";
+import { timingStore } from "../../store/store";
 import { lerp } from "../../lib/helperfunctions";
 import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
 import { useSpring, animated, config } from "@react-spring/three";
-
 
 const ninetyDeg = Math.PI / 2;
 
@@ -17,14 +17,16 @@ export default function Shelf() {
   const shelf = useRef(null);
 
   const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
+  const { setIntro } = timingStore();
 
-  const [{ position }] = useSpring(
+  // SideBoardAnimation
+  const [sideBoardAnimation] = useSpring(
     () => ({
       from: { position: [0, 1, 0] },
       to: { position: [0, 0, 0] },
       config: config.slow,
 
-      onRest: () => console.log("done"),
+      onRest: () => setIntro(),
     }),
 
     []
@@ -38,13 +40,13 @@ export default function Shelf() {
     const sf5Interpolated = lerp(0, ninetyDeg, sf5);
 
     // Rotation
-    sideBoardLeft.current.rotation.z = sf1Interpolated;
-    sideBoardRight.current.rotation.z = -sf1Interpolated;
+    // sideBoardLeft.current.rotation.z = sf1Interpolated;
+    // sideBoardRight.current.rotation.z = -sf1Interpolated;
 
-    topBoardTop.current.rotation.x = -sf2Interpolated;
-    topBoardBottom.current.rotation.x = sf2Interpolated;
+    // topBoardTop.current.rotation.x = -sf2Interpolated;
+    // topBoardBottom.current.rotation.x = sf2Interpolated;
 
-    shelf.current.rotation.x = sf5Interpolated;
+    // shelf.current.rotation.x = sf5Interpolated;
 
     // Location
     // sideBoardLeft.current.position.x = sf3Interpolated;
@@ -56,7 +58,7 @@ export default function Shelf() {
 
   return (
     <group rotation={[0, 0, 0]} ref={shelf} position={[0, 0, 0]}>
-      <animated.group position={position}>
+      <animated.group position={sideBoardAnimation.position}>
         <SideLeft ref={sideBoardLeft} />
         <SideRight ref={sideBoardRight} />
       </animated.group>
