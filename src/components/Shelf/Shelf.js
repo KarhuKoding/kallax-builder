@@ -20,6 +20,7 @@ export default function Shelf() {
   const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
   const { setIntro } = timingStore();
   const [showMiddleParts, setShowMiddleParts] = useState(false);
+  const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
 
   // SideBoardAnimation
   const [sideBoardAnimation] = useSpring(
@@ -34,10 +35,19 @@ export default function Shelf() {
     []
   );
 
+  // Opacity SideLeft
+
   const middlePartsAnimation = useSpring({
     position: showMiddleParts ? [0, 0, 0] : [0, 1, 0],
     config: config.slow,
   });
+
+  const opacitySideLeftAnimation = useSpring({
+    opacity: showMiddleParts ? 0.1 : 1,
+    config: config.slow,
+  });
+
+
   useLayoutEffect(() => {
     const sf2Interpolated = lerp(ninetyDeg, 0, sf2);
 
@@ -55,14 +65,15 @@ export default function Shelf() {
     } else if (sf3 === 0) {
       setShowMiddleParts(false);
     }
-     // topBoardTop.current.rotation.x = -sf2Interpolated;
+
+    // topBoardTop.current.rotation.x = -sf2Interpolated;
     // topBoardBottom.current.rotation.x = sf2Interpolated;
 
     // shelf.current.rotation.x = sf5Interpolated;
 
     // Location
-     sideBoardLeft.current.position.x = sf4Interpolated;
-     sideBoardRight.current.position.x = -sf4Interpolated;
+    sideBoardLeft.current.position.x = sf4Interpolated;
+    sideBoardRight.current.position.x = -sf4Interpolated;
 
     // topBoardTop.current.position.z = sf4Interpolated;
     // topBoardBottom.current.position.z = -sf4Interpolated;
@@ -71,7 +82,10 @@ export default function Shelf() {
   return (
     <group rotation={[0, 0, 0]} ref={shelf} position={[0, 0, 0]}>
       <animated.group position={sideBoardAnimation.position}>
-        <SideLeft ref={sideBoardLeft}>
+        <SideLeft
+          ref={sideBoardLeft}
+          opacity={opacitySideLeftAnimation.opacity}
+        >
           <StepOne />
         </SideLeft>
         <SideRight ref={sideBoardRight} />

@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Edges } from "@react-three/drei";
 import React, { forwardRef, useState } from "react";
 
 export const SideRight = forwardRef((props, ref) => {
@@ -13,9 +13,12 @@ export const SideRight = forwardRef((props, ref) => {
       receiveShadow
       geometry={nodes.SideRight.geometry}
       material={nodes.SideRight.material}
-      position={[0.35, 0, 0] } // -0.16 default
+      position={[0.35, 0, 0]} // -0.16 default
       rotation={[0, 0, -Math.PI / 2]}
-    />
+    >
+      <meshStandardMaterial transparent opacity={1} />
+      <Edges />
+    </mesh>
   );
 });
 
