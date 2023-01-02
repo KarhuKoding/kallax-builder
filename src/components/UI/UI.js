@@ -63,6 +63,7 @@ export default function UI() {
 
   return (
     <group>
+   
       <SidePositionHighlight visible={intro}></SidePositionHighlight>
     </group>
   );
