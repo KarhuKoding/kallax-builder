@@ -43,10 +43,9 @@ export default function Shelf() {
   });
 
   const opacitySideLeftAnimation = useSpring({
-    opacity: showMiddleParts ? 0.1 : 1,
+    opacity: sideBoardLeftOpacity ? 0.1 : 1,
     config: config.slow,
   });
-
 
   useLayoutEffect(() => {
     const sf2Interpolated = lerp(ninetyDeg, 0, sf2);
@@ -60,10 +59,22 @@ export default function Shelf() {
     sideBoardLeft.current.rotation.z = sf2Interpolated;
     sideBoardRight.current.rotation.z = -sf2Interpolated;
 
+    // Stage 3
+
     if (sf3 > 0 && sf3 < 1) {
       setShowMiddleParts(true);
+      setSideBoardLeftOpacity(true);
     } else if (sf3 === 0) {
       setShowMiddleParts(false);
+      setSideBoardLeftOpacity(false);
+    }
+
+    // Stage 5
+
+    console.log(sf5)
+
+    if (sf5 === 1) {
+      setSideBoardLeftOpacity(false);
     }
 
     // topBoardTop.current.rotation.x = -sf2Interpolated;
