@@ -58,6 +58,7 @@ export default function Shelf() {
     const sf6Interpolated = lerp(ninetyDeg, 0, sf6);
     const sf8Interpolated = lerp(0, ninetyDeg, sf8);
     const sf8InterpolatedSecondary= lerp(0, 0.7, sf8);
+    const sf8InterpolatedFull= lerp(0, Math.PI, sf8);
 
 
     // Rotation
@@ -97,6 +98,7 @@ export default function Shelf() {
 
     // Put Shelf up
     shelf.current.rotation.x = sf8Interpolated;
+
     shelf.current.position.y = sf8InterpolatedSecondary;
 
 
