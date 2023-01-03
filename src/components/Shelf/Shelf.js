@@ -21,6 +21,7 @@ export default function Shelf() {
   const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
   const { setIntro } = timingStore();
   const [showMiddleParts, setShowMiddleParts] = useState(false);
+  const [showTopBottom, setShowTopBottom] = useState(false);
   const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
 
   // SideBoardAnimation
@@ -39,8 +40,8 @@ export default function Shelf() {
   // Opacity SideLeft
 
   const middlePartsAnimation = useSpring({
-    position: showMiddleParts ? [0, 0, 0] : [0, 1, 0],
-    config: config.slow,
+    position: showMiddleParts ? [0, 0, 0] : [0, 0.01, 0],
+
     onRest: () => setSideBoardLeftOpacity(true),
   });
 
@@ -54,7 +55,7 @@ export default function Shelf() {
 
     const sf3Interpolated = lerp(0.5, 0.18, sf3);
     const sf4Interpolated = lerp(-0.35, -0.165, sf4);
-    const sf5Interpolated = lerp(1, 0.7, sf4);
+    const sf5Interpolated = lerp(ninetyDeg, 0, sf5);
     const sf6Interpolated = lerp(0, ninetyDeg, sf5);
 
     // Rotation
@@ -69,23 +70,32 @@ export default function Shelf() {
       setShowMiddleParts(false);
       setSideBoardLeftOpacity(false);
     }
+    sideBoardLeft.current.position.x = sf4Interpolated;
+    sideBoardRight.current.position.x = -sf4Interpolated;
 
     // Stage 5
 
-    console.log(sf5);
+    console.log("sf5", sf5);
 
-    // if (sf5 === 1) {
-    //   setSideBoardLeftOpacity(false);
-    // }
+    if (sf5 > 0 && sf5 < 1) {
+      setSideBoardLeftOpacity(false);
+      setShowTopBottom(true);
+    } else if (sf5 === 0) {
+      setShowTopBottom(false);
+    }
 
-    // topBoardTop.current.rotation.x = -sf2Interpolated;
-    // topBoardBottom.current.rotation.x = sf2Interpolated;
+    
+    topBoardTop.current.rotation.x = -sf5Interpolated;
+    topBoardBottom.current.rotation.x = sf5Interpolated;
+    // Stage 6
 
+    // TOP + Bottom Screws
+
+
+    // Stage 7 
+
+    // Put Shelf up 
     // shelf.current.rotation.x = sf5Interpolated;
-
-    // Location
-    sideBoardLeft.current.position.x = sf4Interpolated;
-    sideBoardRight.current.position.x = -sf4Interpolated;
 
     // topBoardTop.current.position.z = sf4Interpolated;
     // topBoardBottom.current.position.z = -sf4Interpolated;
@@ -106,10 +116,10 @@ export default function Shelf() {
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middleBoards} visible={showMiddleParts} />
       </animated.group>
-      <CloseUpAnimation visible={sideBoardLeftOpacity && showMiddleParts} />
+      <CloseUpAnimation visible={showMiddleParts && sf4 > 0 && sf4 < 1} />
 
-      <Top ref={topBoardTop} visible={false} />
-      <Bottom ref={topBoardBottom} visible={false} />
+      <Top ref={topBoardTop} visible={showTopBottom} />
+      <Bottom ref={topBoardBottom} visible={showTopBottom} />
     </group>
   );
 }

@@ -13,7 +13,12 @@ export function CamlockAnimation(props) {
   }, [actions]);
 
   return (
-    <group ref={group} {...props} dispose={null} rotation={[0, Math.PI / 5, 0]}>
+    <group
+      ref={group}
+      {...props}
+      dispose={null}
+      rotation={[0.15, Math.PI / 5, 0]}
+    >
       <directionalLight color="#ffff" position={[-1, 1, 1]}></directionalLight>
 
       <group name="Scene">

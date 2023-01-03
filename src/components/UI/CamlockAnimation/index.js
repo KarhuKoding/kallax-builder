@@ -44,7 +44,7 @@ function RenderTargetPlane({visible, position = [0.48, 1, -0.33]}) {
   return (
     <>
 
-     <OrthographicCamera ref={cam} position={[-0.10, 1.1, 5]} fov={35} zoom={10000} /> 
+     <PerspectiveCamera ref={cam} position={[-0.10, 1.08, 5]} fov={35} zoom={10} /> 
 
       {createPortal(<CamlockAnimation />, scene)}
 
