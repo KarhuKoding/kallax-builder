@@ -5,6 +5,7 @@ import { lerp } from "../../lib/helperfunctions";
 import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
 import { useSpring, animated, config } from "@react-spring/three";
 import { StepOne } from "../UI/UI";
+import CloseUpAnimation from "../UI/CamlockAnimation/index";
 
 const ninetyDeg = Math.PI / 2;
 
@@ -40,6 +41,7 @@ export default function Shelf() {
   const middlePartsAnimation = useSpring({
     position: showMiddleParts ? [0, 0, 0] : [0, 1, 0],
     config: config.slow,
+    onRest: () => setSideBoardLeftOpacity(true),
   });
 
   const opacitySideLeftAnimation = useSpring({
@@ -63,7 +65,6 @@ export default function Shelf() {
 
     if (sf3 > 0 && sf3 < 1) {
       setShowMiddleParts(true);
-      setSideBoardLeftOpacity(true);
     } else if (sf3 === 0) {
       setShowMiddleParts(false);
       setSideBoardLeftOpacity(false);
@@ -71,11 +72,11 @@ export default function Shelf() {
 
     // Stage 5
 
-    console.log(sf5)
+    console.log(sf5);
 
-    if (sf5 === 1) {
-      setSideBoardLeftOpacity(false);
-    }
+    // if (sf5 === 1) {
+    //   setSideBoardLeftOpacity(false);
+    // }
 
     // topBoardTop.current.rotation.x = -sf2Interpolated;
     // topBoardBottom.current.rotation.x = sf2Interpolated;
@@ -105,6 +106,7 @@ export default function Shelf() {
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middleBoards} visible={showMiddleParts} />
       </animated.group>
+      <CloseUpAnimation visible={sideBoardLeftOpacity && showMiddleParts} />
 
       <Top ref={topBoardTop} visible={false} />
       <Bottom ref={topBoardBottom} visible={false} />

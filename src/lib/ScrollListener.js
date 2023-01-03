@@ -7,7 +7,7 @@ import { roundNumber } from "../lib/helperfunctions";
 
 export default function ScrollListener({ children }) {
   return (
-    <ScrollControls pages={5} damping={100}>
+    <ScrollControls pages={1} damping={100}>
       <FetchScrollData />
       {children}
     </ScrollControls>

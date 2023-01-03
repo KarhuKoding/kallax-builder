@@ -1,13 +1,21 @@
+import React, { useRef, useEffect } from "react";
+import { useGLTF, useAnimations, OrbitControls } from "@react-three/drei";
 
-import React, { useRef } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
-
-export function CamlockAnimtion(props) {
+export function CamlockAnimation(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/camlock_animation.glb");
   const { actions } = useAnimations(animations, group);
+
+  useEffect(() => {
+    console.log("actions", actions);
+    actions["CamLockAction"].play();
+    actions["ScrewdriverAction.001"].play();
+  }, [actions]);
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} rotation={[0, Math.PI / 5, 0]}>
+      <directionalLight color="#ffff" position={[-1, 1, 1]}></directionalLight>
+
       <group name="Scene">
         <mesh
           name="Cutter12Right001"
@@ -25,15 +33,11 @@ export function CamlockAnimtion(props) {
         >
           <mesh
             name="Cylinder012"
-            castShadow
-            receiveShadow
             geometry={nodes.Cylinder012.geometry}
             material={materials.Camlock}
           />
           <mesh
             name="Cylinder012_1"
-            castShadow
-            receiveShadow
             geometry={nodes.Cylinder012_1.geometry}
             material={materials.CamlockHighlight}
           />
@@ -45,15 +49,11 @@ export function CamlockAnimtion(props) {
         >
           <mesh
             name="Screwdriver-Mesh"
-            castShadow
-            receiveShadow
             geometry={nodes["Screwdriver-Mesh"].geometry}
             material={materials.red}
           />
           <mesh
             name="Screwdriver-Mesh_1"
-            castShadow
-            receiveShadow
             geometry={nodes["Screwdriver-Mesh_1"].geometry}
             material={materials["default"]}
           />
