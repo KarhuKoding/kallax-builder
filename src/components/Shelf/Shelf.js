@@ -26,6 +26,7 @@ export default function Shelf() {
   // Step1
   const sideBoardAnimation = Step1Animations();
   // Step2
+  const { ScrewsLeft, ScrewsRight } = Step2Components();
   // Step3
   // Step4
   const { middlePartsAnimation, showMiddleParts } = Step4Animations();
@@ -43,10 +44,14 @@ export default function Shelf() {
       {/* Sideboars */}
       <Step1Components />
       <animated.group position={sideBoardAnimation.position}>
+
         <SideLeft ref={left} opacity={opacitySideLeftAnimation.opacity}>
-          <Step2Components />
+          <ScrewsLeft />
         </SideLeft>
-        <SideRight ref={right} />
+        
+        <SideRight ref={right}>
+          <ScrewsRight />
+        </SideRight>
       </animated.group>
 
       {/* Middle */}

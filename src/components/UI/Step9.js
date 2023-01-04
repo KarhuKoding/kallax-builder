@@ -12,7 +12,6 @@ function Step9Animations({ top, bottom }) {
 
   const sf9Interpolated = lerp(ninetyDeg, 0, sf9);
 
-  console.log("rotate 9", sf9);
   useLayoutEffect(() => {
     // visibility
     if (sf9 > 0) {

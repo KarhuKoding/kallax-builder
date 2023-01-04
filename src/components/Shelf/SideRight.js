@@ -1,8 +1,8 @@
-import { useGLTF, Edges } from "@react-three/drei";
-import React, { forwardRef, useState } from "react";
+import { Edges, useGLTF } from "@react-three/drei";
+import React, { forwardRef } from "react";
 
 export const SideRight = forwardRef((props, ref) => {
-  const { nodes, materials } = useGLTF("/SideRight.glb");
+  const { nodes } = useGLTF("/SideRight.glb");
 
   return (
     <mesh
@@ -16,6 +16,7 @@ export const SideRight = forwardRef((props, ref) => {
     >
       <meshStandardMaterial transparent opacity={1} />
       <Edges />
+      {props.children}
     </mesh>
   );
 });
