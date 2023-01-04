@@ -12,6 +12,7 @@ import {
   Step2Components,
   Step3Animations,
   Step4Animations,
+  Step5Animations,
 } from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
@@ -44,14 +45,12 @@ export default function Shelf() {
   });
 
   useLayoutEffect(() => {
-    const sf4Interpolated = lerp(-0.35, -0.165, sf4);
+
     const sf6Interpolated = lerp(ninetyDeg, 0, sf6);
     const sf8Interpolated = lerp(0, ninetyDeg, sf8);
     const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
     const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
 
-    sideBoardLeft.current.position.x = sf4Interpolated;
-    sideBoardRight.current.position.x = -sf4Interpolated;
 
     // Stage 5
 
@@ -84,6 +83,10 @@ export default function Shelf() {
         >
           <Step2Components />
           <Step3Animations
+            sideBoardLeft={sideBoardLeft}
+            sideBoardRight={sideBoardRight}
+          />
+          <Step5Animations
             sideBoardLeft={sideBoardLeft}
             sideBoardRight={sideBoardRight}
           />
