@@ -1,5 +1,2 @@
-// Make Sideleft non-transparent
-// Close CloseUp Animation
-
-// TODO
-// set Step 7 And Step6
+// Make Sideleft non-transparent => See Step6
+// Close CloseUp Animation => See Step7

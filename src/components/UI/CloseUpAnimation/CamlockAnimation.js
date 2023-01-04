@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { useGLTF, useAnimations, OrbitControls } from "@react-three/drei";
+import { useAnimations, useGLTF } from "@react-three/drei";
+import React, { useEffect, useRef } from "react";
 
 export function CamlockAnimation(props) {
   const group = useRef();

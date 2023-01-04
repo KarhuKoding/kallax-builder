@@ -1,13 +1,13 @@
-import React, { useMemo, useRef } from "react";
-import { Circle, PerspectiveCamera, useGLTF, OrthographicCamera } from "@react-three/drei";
+import { Circle, PerspectiveCamera, useGLTF } from "@react-three/drei";
 import { createPortal, useFrame } from "@react-three/fiber";
+import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 // Components
 import { CamlockAnimation } from "./CamlockAnimation";
 
-function SpeakingBubble(props) {
-  const { nodes, materials } = useGLTF("/speakingBubble.glb");
+function SpeakingBubble() {
+  const { nodes } = useGLTF("/speakingBubble.glb");
   return (
     <mesh
       geometry={nodes.Circle.geometry}
@@ -20,7 +20,7 @@ function SpeakingBubble(props) {
   );
 }
 
-function RenderTargetPlane({visible, position = [0.48, 1, -0.33]}) {
+function RenderTargetPlane({ visible, position = [0.48, 1, -0.33] }) {
   const cam = useRef();
   const [scene, target] = useMemo(() => {
     const scene = new THREE.Scene();
@@ -35,7 +35,6 @@ function RenderTargetPlane({visible, position = [0.48, 1, -0.33]}) {
   }, []);
 
   useFrame((state) => {
-    
     state.gl.setRenderTarget(target);
     state.gl.render(scene, cam.current);
     state.gl.setRenderTarget(null);
@@ -43,8 +42,12 @@ function RenderTargetPlane({visible, position = [0.48, 1, -0.33]}) {
 
   return (
     <>
-
-     <PerspectiveCamera ref={cam} position={[-0.10, 1.08, 5]} fov={35} zoom={10} /> 
+      <PerspectiveCamera
+        ref={cam}
+        position={[-0.1, 1.08, 5]}
+        fov={35}
+        zoom={10}
+      />
 
       {createPortal(<CamlockAnimation />, scene)}
 

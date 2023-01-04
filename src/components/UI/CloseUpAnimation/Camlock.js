@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import React from "react";
 
 export default function Camlock({
   position = [0, 0, 0],
   rotation = [0, Math.PI / 2, 0],
   ...props
 }) {
-  const { nodes, materials } = useGLTF("/Camlock.glb");
+  const { nodes } = useGLTF("/Camlock.glb");
   return (
     <group {...props} dispose={null}>
       <mesh
