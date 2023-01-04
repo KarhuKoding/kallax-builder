@@ -13,6 +13,7 @@ import {
   Step3Animations,
   Step4Animations,
   Step5Animations,
+  Step6Animations,
 } from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
@@ -37,20 +38,20 @@ export default function Shelf() {
   // Step3
   // Step4
   const { middlePartsAnimation, showMiddleParts } = Step4Animations();
-
-  // Opacity SideLeft
-  const opacitySideLeftAnimation = useSpring({
-    opacity: sideBoardLeftOpacity ? 0.1 : 1,
-    config: config.slow,
-  });
+  // Step5
+  // Step6
+  const opacitySideLeftAnimation = Step6Animations();
+  // Step6
+  // Step8
+  // Step9
+  // Step10
+  // Step11
 
   useLayoutEffect(() => {
-
     const sf6Interpolated = lerp(ninetyDeg, 0, sf6);
     const sf8Interpolated = lerp(0, ninetyDeg, sf8);
     const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
     const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
-
 
     // Stage 5
 

@@ -34,7 +34,7 @@ Move Sideparts into Middle Parts
 
 6. Step 6
 
-Make Sidepart left tranparent
+Make SideboadLeft tranparent
 
 7. Step 7
 

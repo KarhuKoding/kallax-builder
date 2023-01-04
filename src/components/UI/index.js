@@ -3,6 +3,7 @@ import { Step2Components } from "./Step2";
 import { Step3Animations } from "./Step3";
 import { Step4Animations } from "./Step4";
 import { Step5Animations } from "./Step5";
+import { Step6Animations } from "./Step6";
 
 export {
   Step1Components,
@@ -11,4 +12,5 @@ export {
   Step3Animations,
   Step4Animations,
   Step5Animations,
+  Step6Animations,
 };

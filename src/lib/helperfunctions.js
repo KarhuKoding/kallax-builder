@@ -9,8 +9,11 @@ export const isInbetween = (number) => {
 
 export const isZero = (number) => {
   return number === 0;
-}
+};
 
+export const isOne = (number) => {
+  return number === 1;
+};
 // source: https://github.com/mrdoob/three.js/blob/master/src/math/MathUtils.js
 
 const _lut = [
