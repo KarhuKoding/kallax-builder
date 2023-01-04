@@ -4,7 +4,7 @@
 
 Intro
 
-- Boards coming from Top, Highlight Sides
+- Boards coming from Top, then Highlight Position Holes
 
 2. Step 2
 

@@ -1,31 +1,14 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { scrollStore } from "../../store/store";
-import { timingStore } from "../../store/store";
+
 import { lerp } from "../../lib/helperfunctions";
 import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
 import { useSpring, animated, config } from "@react-spring/three";
-import { StepOne } from "../UI/UI";
 import CloseUpAnimation from "../UI/CamlockAnimation/index";
+import { StepOne } from "../UI/UI";
+import { Step1Components, Step1Animations } from "../UI/Step1";
 
 const ninetyDeg = Math.PI / 2;
-
-const SpringAnimations = () => {
-  // Step 1 - Intro
-  const { setStep1Done } = timingStore();
-
-  const [sideBoardAnimation] = useSpring(
-    () => ({
-      from: { position: [0, 1, 0] },
-      to: { position: [0, 0, 0] },
-      config: config.slow,
-      onRest: () => setStep1Done(true),
-    }),
-
-    []
-  );
-
-  return { sideBoardAnimation };
-};
 
 export default function Shelf() {
   const sideBoardLeft = useRef(null);
@@ -43,7 +26,7 @@ export default function Shelf() {
   const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
 
   // Step1
-  const { sideBoardAnimation } = SpringAnimations();
+  const sideBoardAnimation = Step1Animations();
 
   // Opacity SideLeft
 
@@ -115,6 +98,7 @@ export default function Shelf() {
         </SideLeft>
         <SideRight ref={sideBoardRight} />
       </animated.group>
+      <Step1Components></Step1Components>
 
       {/* Middle */}
       <animated.group position={middlePartsAnimation.position}>

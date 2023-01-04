@@ -5,7 +5,6 @@ import { Canvas } from "@react-three/fiber";
 import ScrollListener from "./lib/ScrollListener";
 // Components
 import Shelf from "./components/Shelf/Shelf";
-import UI from "./components/UI/UI";
 
 import "./styles.css";
 
@@ -17,7 +16,6 @@ export default function App() {
           <Stage environment="city" intensity={0.6}>
             <ScrollListener>
               <Shelf />
-              <UI />
             </ScrollListener>
           </Stage>
         </Suspense>
