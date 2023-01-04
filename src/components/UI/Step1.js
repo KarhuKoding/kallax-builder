@@ -1,10 +1,10 @@
 //Intro
 //Boards coming from Top, then Highlight Position Holes
-import React, { useEffect } from "react";
 import { config, useSpring } from "@react-spring/three";
+import React from "react";
+import { isInbetween, isZero } from "../../lib/helperfunctions";
 import { scrollStore, timingStore } from "../../store/store";
 import { SidePositionHighlight } from "../PositionHighlight/SidePositionHighlight";
-import { isInbetween, isZero } from "../../lib/helperfunctions";
 
 // Position Holes Highlight
 function Step1Components() {
@@ -21,7 +21,6 @@ function Step1Components() {
 // FromTop Animation
 function Step1Animations() {
   const { setStep1Done } = timingStore();
-  const { sf1 } = scrollStore();
 
   const [sideBoardAnimation] = useSpring(
     () => ({

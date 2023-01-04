@@ -40,7 +40,7 @@ export default function Shelf() {
   // Step11
 
   return (
-    <group ref={shelf} rotation={[0, 0, 0]} position={[0, 0, 0]}>
+    <group ref={shelf} rotation={[0, 0, 0]} position={[-1, 0, 0]}>
       {/* Sideboars */}
       <Step1Components />
       <animated.group position={sideBoardAnimation.position}>
