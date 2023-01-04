@@ -1,6 +1,6 @@
 //Move Camlock Screws + Show CloseUp Animation
 import React, { useState, useLayoutEffect } from "react";
-import CloseUpAnimation from "./CloseUpAnimation/index";
+import CloseUpAnimation from "./CamlockAnimation/index";
 import { isInbetween, isZero, isOne } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 // TODO move Camlock Screws

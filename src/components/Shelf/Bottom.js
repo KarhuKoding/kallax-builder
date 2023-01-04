@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { useGLTF, Edges } from "@react-three/drei";
 
 export const Bottom = forwardRef(({ visible = true, ...props }, ref) => {
-  const { nodes, materials } = useGLTF("/Bottom.glb");
+  const { nodes } = useGLTF("/Bottom.glb");
   return (
     <mesh
       ref={ref}

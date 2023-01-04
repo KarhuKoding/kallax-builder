@@ -15,7 +15,8 @@ function Step11Animations({ shelf }) {
 
   //SpinningAnimation
   useFrame((state, delta) => {
-    if (shelf.current === null || !isOne(sf11)) return;
+    if (shelf.current === null) return;
+    else if (!isOne(sf11)) return (shelf.current.rotation.z = 0);
     shelf.current.rotation.z += delta;
   });
 

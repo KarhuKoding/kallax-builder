@@ -7,7 +7,6 @@ export function CamlockAnimation(props) {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    console.log("actions", actions);
     actions["CamLockAction"].play();
     actions["ScrewdriverAction.001"].play();
   }, [actions]);

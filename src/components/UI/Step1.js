@@ -1,27 +1,27 @@
 //Intro
 //Boards coming from Top, then Highlight Position Holes
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { config, useSpring } from "@react-spring/three";
 import { scrollStore, timingStore } from "../../store/store";
 import { SidePositionHighlight } from "../PositionHighlight/SidePositionHighlight";
+import { isInbetween, isZero } from "../../lib/helperfunctions";
 
 // Position Holes Highlight
 function Step1Components() {
   const { sf1 } = scrollStore();
-  const { step1Done, setStep1Done } = timingStore();
+  const { step1Done } = timingStore();
 
-  useLayoutEffect(() => {
-    if (sf1 === 1) {
-      setStep1Done(false);
-    }
-  }, [sf1, setStep1Done]);
-
-  return <SidePositionHighlight visible={step1Done}></SidePositionHighlight>;
+  return (
+    <SidePositionHighlight
+      visible={step1Done && (isInbetween(sf1) || isZero(sf1))}
+    ></SidePositionHighlight>
+  );
 }
 
 // FromTop Animation
 function Step1Animations() {
   const { setStep1Done } = timingStore();
+  const { sf1 } = scrollStore();
 
   const [sideBoardAnimation] = useSpring(
     () => ({
