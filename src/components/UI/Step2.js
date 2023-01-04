@@ -6,8 +6,8 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
-import { ArrowRound } from "./Arrows/ArrowRound";
-import { Screws } from "./Screws";
+import { ArrowRound } from "../Arrows/ArrowRound";
+import { Screws } from "../Screws/Screws";
 
 // 12x Screws
 const Step2Components = () => {

@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
-import { ArrowStraight } from "./Arrows/ArrowStraight";
+import { ArrowStraight } from "../Arrows/ArrowStraight";
 
 export function SidePositionHighlight(props) {
-  const { nodes, materials } = useGLTF("/SidePositionHighlight.glb");
+  const { nodes } = useGLTF("/SidePositionHighlight.glb");
   return (
     <group {...props} dispose={null}>
       {/* left */}

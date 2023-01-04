@@ -19,10 +19,9 @@ function Step11Animations({ shelf }) {
     if (shelf.current === null) return;
     shelf.current.rotation.x = sf11Interpolated;
     shelf.current.position.y = sf11InterpolatedSecondary;
-  }, [sf11]);
+  }, [sf11, shelf, sf11Interpolated, sf11InterpolatedSecondary]);
 
   return null;
 }
 
 export { Step11Animations };
-

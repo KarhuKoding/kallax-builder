@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function ArrowStraight({
@@ -6,7 +6,7 @@ export function ArrowStraight({
   rotation = [0, 0, 0],
   ...props
 }) {
-  const { nodes, materials } = useGLTF("/ArrowStraight.glb");
+  const { nodes } = useGLTF("/ArrowStraight.glb");
   return (
     <group {...props} dispose={null}>
       <mesh

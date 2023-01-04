@@ -1,9 +1,8 @@
-import { useScroll, ScrollControls } from "@react-three/drei";
+import { ScrollControls, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React from "react";
 
 import { scrollStore } from "../store/store";
-import { roundNumber } from "../lib/helperfunctions";
 
 export default function ScrollListener({ children }) {
   return (

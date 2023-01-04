@@ -12,12 +12,11 @@ function Step5Animations({ left, right }) {
 
   useLayoutEffect(() => {
     // Rotation
-    if (left.current === null || right.current === null)
-      return;
+    if (left.current === null || right.current === null) return;
 
     left.current.position.x = sf5Interpolated;
     right.current.position.x = -sf5Interpolated;
-  }, [sf5]);
+  }, [sf5, left, right, sf5Interpolated]);
 
   return null;
 }

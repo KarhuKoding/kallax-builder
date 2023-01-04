@@ -3,7 +3,7 @@
 import React, { useLayoutEffect } from "react";
 import { config, useSpring } from "@react-spring/three";
 import { scrollStore, timingStore } from "../../store/store";
-import { SidePositionHighlight } from "./SidePositionHighlight";
+import { SidePositionHighlight } from "../PositionHighlight/SidePositionHighlight";
 
 // Position Holes Highlight
 function Step1Components() {
@@ -14,7 +14,7 @@ function Step1Components() {
     if (sf1 === 1) {
       setStep1Done(false);
     }
-  }, [sf1]);
+  }, [sf1, setStep1Done]);
 
   return <SidePositionHighlight visible={step1Done}></SidePositionHighlight>;
 }
@@ -30,7 +30,7 @@ function Step1Animations() {
       onRest: () => setStep1Done(true),
     }),
 
-    []
+    [setStep1Done]
   );
 
   return sideBoardAnimation;

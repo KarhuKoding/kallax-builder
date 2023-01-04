@@ -13,12 +13,11 @@ function Step3Animations({ left, right }) {
 
   useLayoutEffect(() => {
     // Rotation
-    if (left.current === null || !right.current === null)
-      return;
+    if (left.current === null || !right.current === null) return;
 
     left.current.rotation.z = sf3Interpolated;
     right.current.rotation.z = -sf3Interpolated;
-  }, [sf3]);
+  }, [sf3, left, right, sf3Interpolated]);
 
   return null;
 }

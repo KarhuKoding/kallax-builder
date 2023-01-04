@@ -1,8 +1,8 @@
 // Show TopAnd Bottom
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
+import { ninetyDeg } from "../../lib/constants";
 import { isZero, lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
-import { ninetyDeg } from "../../lib/constants";
 
 // Rotate up 90deg both at same time and move a little bit towards the Shelf
 
@@ -26,7 +26,7 @@ function Step9Animations({ top, bottom }) {
     if (top.current === null || bottom.current === null) return;
     top.current.rotation.x = -sf9Interpolated;
     bottom.current.rotation.x = sf9Interpolated;
-  }, [sf9]);
+  }, [sf9, top, bottom, sf9Interpolated]);
 
   return null;
 }

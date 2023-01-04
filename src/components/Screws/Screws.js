@@ -1,12 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Screws({
-  position = [0, 0, 0],
-
-  ...props
-}) {
-  const { nodes, materials } = useGLTF("/placeholderScrew.glb");
+export function Screws({ position = [0, 0, 0] }) {
+  const { nodes } = useGLTF("/placeholderScrew.glb");
   return (
     <group dispose={null} position={position}>
       <mesh
