@@ -5,7 +5,7 @@ function PageNumber() {
     scrollStore();
 
   return (
-    <div class="page_indicator">
+    <div className="page_indicator">
       <h1>
         {Math.floor(
           sf1 + sf2 + sf3 + sf4 + sf5 + sf6 + sf7 + sf8 + sf9 + sf10 + sf11
