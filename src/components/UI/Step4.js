@@ -1,18 +1,18 @@
 //Middle Parts
 //Make all 3 Middleparts appear
-import React, { useLayoutEffect, useState } from "react";
-import { config, useSpring } from "@react-spring/three";
-import { scrollStore, timingStore } from "../../store/store";
-import { SidePositionHighlight } from "./SidePositionHighlight";
+import { useSpring } from "@react-spring/three";
+import { useLayoutEffect, useState } from "react";
+import { isInbetween, isZero } from "../../lib/helperfunctions";
+import { scrollStore } from "../../store/store";
 
 function Step4Animations() {
   const [showMiddleParts, setShowMiddleParts] = useState(false);
   const { sf4 } = scrollStore();
 
   useLayoutEffect(() => {
-    if (sf4 > 0 && sf4 < 1) {
+    if (isInbetween(sf4)) {
       setShowMiddleParts(true);
-    } else if (sf4 === 0) {
+    } else if (isZero(sf4)) {
       setShowMiddleParts(false);
     }
   }, [sf4]);
@@ -21,7 +21,8 @@ function Step4Animations() {
     position: showMiddleParts ? [0, 0, 0] : [0, 0.01, 0],
   });
 
-  return {middlePartsAnimation, showMiddleParts};
+  return { middlePartsAnimation, showMiddleParts };
 }
 
 export { Step4Animations };
+

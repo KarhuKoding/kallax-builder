@@ -3,6 +3,14 @@ export const roundNumber = (number) => {
   return Math.floor(number * 100) / 100;
 };
 
+export const isInbetween = (number) => {
+  return number > 0 && number < 1;
+};
+
+export const isZero = (number) => {
+  return number === 0;
+}
+
 // source: https://github.com/mrdoob/three.js/blob/master/src/math/MathUtils.js
 
 const _lut = [
