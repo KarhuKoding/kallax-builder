@@ -57,10 +57,12 @@ function FetchScrollData() {
     setSf10(offsetRange10);
     setSf11(offsetRange11);
 
-    // console.log(
-    //   "scroll",
-    //   roundNumber(offsetRange1),
-    // );
+    console.log(
+      "scroll 1",
+      roundNumber(offsetRange1),
+      "scroll 2",
+      roundNumber(offsetRange2)
+    );
   });
   return null;
 }

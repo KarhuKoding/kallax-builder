@@ -5,8 +5,8 @@ import { lerp } from "../../lib/helperfunctions";
 import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
 import { useSpring, animated, config } from "@react-spring/three";
 import CloseUpAnimation from "../UI/CamlockAnimation/index";
-import { StepOne } from "../UI/UI";
-import { Step1Components, Step1Animations } from "../UI/Step1";
+
+import { Step1Components, Step1Animations, Step2Components } from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
 
@@ -94,7 +94,7 @@ export default function Shelf() {
           ref={sideBoardLeft}
           opacity={opacitySideLeftAnimation.opacity}
         >
-          <StepOne />
+          <Step2Components />
         </SideLeft>
         <SideRight ref={sideBoardRight} />
       </animated.group>
