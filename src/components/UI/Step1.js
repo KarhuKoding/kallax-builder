@@ -19,6 +19,7 @@ function Step1Components() {
   return <SidePositionHighlight visible={step1Done}></SidePositionHighlight>;
 }
 
+// FromTop Animation
 function Step1Animations() {
   const { setStep1Done } = timingStore();
 

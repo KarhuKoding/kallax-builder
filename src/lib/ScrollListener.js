@@ -15,6 +15,7 @@ export default function ScrollListener({ children }) {
 
 function FetchScrollData() {
   const scroll = useScroll();
+  
   const {
     setSf1,
     setSf2,
