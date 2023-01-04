@@ -4,7 +4,6 @@ import { scrollStore } from "../../store/store";
 import { lerp } from "../../lib/helperfunctions";
 import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
 import { useSpring, animated, config } from "@react-spring/three";
-import CloseUpAnimation from "../UI/CamlockAnimation/index";
 
 import {
   Step1Components,
@@ -14,6 +13,7 @@ import {
   Step4Animations,
   Step5Animations,
   Step6Animations,
+  Step7Components,
 } from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
@@ -30,7 +30,7 @@ export default function Shelf() {
   const { sf1, sf2, sf3, sf4, sf5, sf6, sf7, sf8 } = scrollStore();
 
   const [showTopBottom, setShowTopBottom] = useState(false);
-  const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
+
 
   // Step1
   const sideBoardAnimation = Step1Animations();
@@ -53,24 +53,10 @@ export default function Shelf() {
     const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
     const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
 
-    // Stage 5
-
-    if (sf6 > 0 && sf6 < 1) {
-      setSideBoardLeftOpacity(false);
-      setShowTopBottom(true);
-    } else if (sf6 === 0) {
-      setShowTopBottom(false);
-    }
-
     topBoardTop.current.rotation.x = -sf6Interpolated;
     topBoardBottom.current.rotation.x = sf6Interpolated;
 
-    // Stage 7
-
-    // TOP + Bottom Screws
-
     shelf.current.rotation.x = sf8Interpolated;
-
     shelf.current.position.y = sf8InterpolatedSecondary;
   }, [sf2, sf3, sf4, sf5, sf6, sf7, sf8]);
 
@@ -100,7 +86,7 @@ export default function Shelf() {
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middleBoards} visible={showMiddleParts} />
       </animated.group>
-      <CloseUpAnimation visible={sf5 > 0 && sf5 < 1} />
+      <Step7Components />
 
       {/* Top and Bottom */}
       <Top ref={topBoardTop} visible={showTopBottom} />
