@@ -3,12 +3,10 @@ import React, { forwardRef, useState } from "react";
 
 export const SideRight = forwardRef((props, ref) => {
   const { nodes, materials } = useGLTF("/SideRight.glb");
-  const [active, setActive] = useState(false);
 
   return (
     <mesh
       ref={ref}
-      onClick={() => setActive(!active)}
       castShadow
       receiveShadow
       geometry={nodes.SideRight.geometry}

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { useGLTF, Edges } from "@react-three/drei";
-import Camlock from "../UI/Camlock";
+import Camlock from "../UI/CamlockAnimation/Camlock";
 
 const Camlocks = () => {
   return (

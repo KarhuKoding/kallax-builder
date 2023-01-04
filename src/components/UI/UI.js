@@ -2,12 +2,12 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import { scrollStore } from "../../store/store";
 import { lerp } from "../../lib/helperfunctions";
 import { ninetyDeg } from "../../lib/constants";
-import { ArrowRound } from "./ArrowRound";
+import { ArrowRound } from "./Arrows/ArrowRound";
 import { Screws } from "./Screws";
-import { HighlightLeft } from "./Hightlight";
 import { timingStore } from "../../store/store";
 import { SidePositionHighlight } from "./SidePositionHighlight";
 
+// 12x Screws
 export const StepOne = () => {
   const arrow1 = useRef(null);
   const ref = useRef(null);
@@ -49,19 +49,16 @@ export const StepOne = () => {
   );
 };
 
+// SideBoard Position Highlight
 export default function UI() {
-  const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
-  const { intro, setIntro } = timingStore();
+  const { sf1 } = scrollStore();
+  const { step1Done, setStep1Done } = timingStore();
 
   useLayoutEffect(() => {
     if (sf1 === 1) {
-      setIntro(false);
+      setStep1Done(false);
     }
-  }, [sf1, sf2, sf3, sf4, sf5]);
+  }, [sf1]);
 
-  return (
-    <group>
-      <SidePositionHighlight visible={intro}></SidePositionHighlight>
-    </group>
-  );
+  return <SidePositionHighlight visible={step1Done}></SidePositionHighlight>;
 }

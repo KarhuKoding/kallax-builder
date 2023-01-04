@@ -9,6 +9,24 @@ import CloseUpAnimation from "../UI/CamlockAnimation/index";
 
 const ninetyDeg = Math.PI / 2;
 
+const SpringAnimations = () => {
+  // Step 1 - Intro
+  const { setStep1Done } = timingStore();
+
+  const [sideBoardAnimation] = useSpring(
+    () => ({
+      from: { position: [0, 1, 0] },
+      to: { position: [0, 0, 0] },
+      config: config.slow,
+      onRest: () => setStep1Done(true),
+    }),
+
+    []
+  );
+
+  return { sideBoardAnimation };
+};
+
 export default function Shelf() {
   const sideBoardLeft = useRef(null);
   const sideBoardRight = useRef(null);
@@ -19,29 +37,18 @@ export default function Shelf() {
   const shelf = useRef(null);
 
   const { sf1, sf2, sf3, sf4, sf5, sf6, sf7, sf8 } = scrollStore();
-  const { setIntro } = timingStore();
+
   const [showMiddleParts, setShowMiddleParts] = useState(false);
   const [showTopBottom, setShowTopBottom] = useState(false);
   const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
 
-  // SideBoardAnimation
-  const [sideBoardAnimation] = useSpring(
-    () => ({
-      from: { position: [0, 1, 0] },
-      to: { position: [0, 0, 0] },
-      config: config.slow,
-
-      onRest: () => setIntro(true),
-    }),
-
-    []
-  );
+  // Step1
+  const { sideBoardAnimation } = SpringAnimations();
 
   // Opacity SideLeft
 
   const middlePartsAnimation = useSpring({
     position: showMiddleParts ? [0, 0, 0] : [0, 0.01, 0],
-
     onRest: () => setSideBoardLeftOpacity(true),
   });
 
@@ -57,9 +64,8 @@ export default function Shelf() {
     const sf4Interpolated = lerp(-0.35, -0.165, sf4);
     const sf6Interpolated = lerp(ninetyDeg, 0, sf6);
     const sf8Interpolated = lerp(0, ninetyDeg, sf8);
-    const sf8InterpolatedSecondary= lerp(0, 0.7, sf8);
-    const sf8InterpolatedFull= lerp(0, Math.PI, sf8);
-
+    const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
+    const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
 
     // Rotation
     sideBoardLeft.current.rotation.z = sf2Interpolated;
@@ -78,8 +84,6 @@ export default function Shelf() {
 
     // Stage 5
 
-    console.log("sf5", sf5);
-
     if (sf6 > 0 && sf6 < 1) {
       setSideBoardLeftOpacity(false);
       setShowTopBottom(true);
@@ -94,18 +98,14 @@ export default function Shelf() {
 
     // TOP + Bottom Screws
 
-    // Stage 8
-
-    // Put Shelf up
     shelf.current.rotation.x = sf8Interpolated;
 
     shelf.current.position.y = sf8InterpolatedSecondary;
-
-
   }, [sf2, sf3, sf4, sf5, sf6, sf7, sf8]);
 
   return (
-    <group rotation={[0, 0, 0]} ref={shelf} position={[0, 0, 0]}>
+    <group ref={shelf} rotation={[0, 0, 0]} position={[0, 0, 0]}>
+      {/* Sideboars */}
       <animated.group position={sideBoardAnimation.position}>
         <SideLeft
           ref={sideBoardLeft}
@@ -116,11 +116,13 @@ export default function Shelf() {
         <SideRight ref={sideBoardRight} />
       </animated.group>
 
+      {/* Middle */}
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middleBoards} visible={showMiddleParts} />
       </animated.group>
       <CloseUpAnimation visible={sf5 > 0 && sf5 < 1} />
 
+      {/* Top and Bottom */}
       <Top ref={topBoardTop} visible={showTopBottom} />
       <Bottom ref={topBoardBottom} visible={showTopBottom} />
     </group>

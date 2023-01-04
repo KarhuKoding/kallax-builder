@@ -30,7 +30,7 @@ export const scrollStore = create((set) => ({
 }));
 
 export const timingStore = create((set) => ({
-  intro: false,
+  step1Done: false,
 
-  setIntro: (bool) => set(() => ({ intro: bool })),
+  setStep1Done: (bool) => set(() => ({ step1Done: bool })),
 }));
