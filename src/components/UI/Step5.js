@@ -12,7 +12,7 @@ function Step5Animations({ sideBoardLeft, sideBoardRight }) {
 
   useLayoutEffect(() => {
     // Rotation
-    if (sideBoardLeft.current === null || !sideBoardRight.current === null)
+    if (sideBoardLeft.current === null || sideBoardRight.current === null)
       return;
 
     sideBoardLeft.current.position.x = sf5Interpolated;

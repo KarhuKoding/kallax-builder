@@ -14,6 +14,7 @@ import {
   Step5Animations,
   Step6Animations,
   Step7Components,
+  Step9Animations,
 } from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
@@ -29,9 +30,6 @@ export default function Shelf() {
 
   const { sf1, sf2, sf3, sf4, sf5, sf6, sf7, sf8 } = scrollStore();
 
-  const [showTopBottom, setShowTopBottom] = useState(false);
-
-
   // Step1
   const sideBoardAnimation = Step1Animations();
   // Step2
@@ -44,17 +42,15 @@ export default function Shelf() {
   // Step6
   // Step8
   // Step9
+  // const { showTopParts } = Step9Animations();
+
   // Step10
   // Step11
 
   useLayoutEffect(() => {
-    const sf6Interpolated = lerp(ninetyDeg, 0, sf6);
     const sf8Interpolated = lerp(0, ninetyDeg, sf8);
     const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
     const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
-
-    topBoardTop.current.rotation.x = -sf6Interpolated;
-    topBoardBottom.current.rotation.x = sf6Interpolated;
 
     shelf.current.rotation.x = sf8Interpolated;
     shelf.current.position.y = sf8InterpolatedSecondary;
@@ -89,8 +85,9 @@ export default function Shelf() {
       <Step7Components />
 
       {/* Top and Bottom */}
-      <Top ref={topBoardTop} visible={showTopBottom} />
-      <Bottom ref={topBoardBottom} visible={showTopBottom} />
+      <Top ref={topBoardTop} visible={false} />
+      <Bottom ref={topBoardBottom} visible={false} />
+      <Step9Animations top={topBoardTop} bottom={topBoardBottom} />
     </group>
   );
 }

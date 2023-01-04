@@ -18,7 +18,7 @@ function Step7Components() {
     } else if (isOne(sf7)) {
       setIsVisible(false);
     }
-  }, [sf7, sf8]);
+  }, [sf7]);
 
   return <CloseUpAnimation visible={isVisible}></CloseUpAnimation>;
 }
