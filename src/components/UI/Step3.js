@@ -1,7 +1,7 @@
 //Flipping SideBoars
 //Flip Sides 90deg UP
-import { useLayoutEffect, useState } from "react";
-import { lerp, mapLinear } from "../../lib/helperfunctions";
+import { useLayoutEffect } from "react";
+import { lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 
 const ninetyDeg = Math.PI / 2;
@@ -21,9 +21,10 @@ function Step3Animations({ left, right }) {
 
     right.current.rotation.z = sf3InterpolatedRight;
     left.current.rotation.z = sf3InterpolatedLeft;
-  }, [sf3, left, right, sf3InterpolatedRight]);
+  }, [sf3, left, right, sf3InterpolatedRight, sf3InterpolatedLeft]);
 
   return null;
 }
 
 export { Step3Animations };
+
