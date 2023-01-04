@@ -12,6 +12,9 @@ export const scrollStore = create((set) => ({
   sf6: 0,
   sf7: 0,
   sf8: 0,
+  sf9: 0,
+  sf10: 0,
+  sf11: 0,
 
   setSf1: (offsetRange1) => set(() => ({ sf1: roundNumber(offsetRange1) })),
   setSf2: (offsetRange2) => set(() => ({ sf2: roundNumber(offsetRange2) })),
@@ -21,6 +24,9 @@ export const scrollStore = create((set) => ({
   setSf6: (offsetRange6) => set(() => ({ sf6: roundNumber(offsetRange6) })),
   setSf7: (offsetRange7) => set(() => ({ sf7: roundNumber(offsetRange7) })),
   setSf8: (offsetRange8) => set(() => ({ sf8: roundNumber(offsetRange8) })),
+  setSf9: (offsetRange8) => set(() => ({ sf8: roundNumber(offsetRange8) })),
+  setSf10: (offsetRange8) => set(() => ({ sf8: roundNumber(offsetRange8) })),
+  setSf11: (offsetRange8) => set(() => ({ sf8: roundNumber(offsetRange8) })),
 }));
 
 export const timingStore = create((set) => ({
