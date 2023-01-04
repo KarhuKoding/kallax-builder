@@ -1,15 +1,18 @@
 import React, { forwardRef } from "react";
 import { useGLTF, Edges } from "@react-three/drei";
 import Camlock from "../UI/CloseUpAnimation/Camlock";
+import { Step7Animations } from "../UI/";
 
 const Camlocks = () => {
+  const { sf7InterpolatedPosition } = Step7Animations();
+  console.log(sf7InterpolatedPosition);
   return (
-    <>
+    <group dispose={null} position={[0, sf7InterpolatedPosition, 0]}>
       <Camlock position={[-0.141, 0, -0.027]} />
       <Camlock position={[0.141, 0, -0.027]} rotation={[0, -Math.PI / 2, 0]} />
       <Camlock position={[-0.141, 0, -0.363]} />
       <Camlock position={[0.141, 0, -0.363]} rotation={[0, -Math.PI / 2, 0]} />
-    </>
+    </group>
   );
 };
 
