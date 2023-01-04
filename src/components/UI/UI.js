@@ -53,17 +53,14 @@ export default function UI() {
   const { sf1, sf2, sf3, sf4, sf5 } = scrollStore();
   const { intro, setIntro } = timingStore();
 
-  console.log()
-
   useLayoutEffect(() => {
     if (sf1 === 1) {
       setIntro(false);
-    } 
+    }
   }, [sf1, sf2, sf3, sf4, sf5]);
 
   return (
     <group>
-   
       <SidePositionHighlight visible={intro}></SidePositionHighlight>
     </group>
   );
