@@ -5,12 +5,19 @@ import { useLayoutEffect } from "react";
 import { ninetyDeg } from "../../lib/constants";
 import { isInbetween, isOne, lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
+import { useFrame } from "@react-three/fiber";
 
 function Step11Animations({ shelf }) {
   const { sf11 } = scrollStore();
 
   const sf11Interpolated = lerp(0, ninetyDeg, sf11);
   const sf11InterpolatedSecondary = lerp(0, 0.7, sf11);
+
+  //SpinningAnimation
+  useFrame((state, delta) => {
+    if (shelf.current === null || !isOne(sf11)) return;
+    shelf.current.rotation.z += delta;
+  });
 
   useLayoutEffect(() => {
     // Rotation
@@ -24,6 +31,7 @@ function Step11Animations({ shelf }) {
 
 function Step11Components() {
   const { sf11 } = scrollStore();
+
   return (
     isInbetween(sf11) ||
     (isOne(sf11) && (
