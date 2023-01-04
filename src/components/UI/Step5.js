@@ -5,18 +5,18 @@ import { lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 //TODO first left then right
 
-function Step5Animations({ sideBoardLeft, sideBoardRight }) {
+function Step5Animations({ left, right }) {
   const { sf5 } = scrollStore();
 
   const sf5Interpolated = lerp(-0.35, -0.165, sf5);
 
   useLayoutEffect(() => {
     // Rotation
-    if (sideBoardLeft.current === null || sideBoardRight.current === null)
+    if (left.current === null || right.current === null)
       return;
 
-    sideBoardLeft.current.position.x = sf5Interpolated;
-    sideBoardRight.current.position.x = -sf5Interpolated;
+    left.current.position.x = sf5Interpolated;
+    right.current.position.x = -sf5Interpolated;
   }, [sf5]);
 
   return null;

@@ -3,21 +3,24 @@ import { animated } from "@react-spring/three";
 import { Bottom, Middle, SideLeft, SideRight, Top } from "./index";
 
 import {
-  Step11Animations, Step1Animations, Step1Components, Step2Components,
+  Step11Animations,
+  Step1Animations,
+  Step1Components,
+  Step2Components,
   Step3Animations,
   Step4Animations,
   Step5Animations,
   Step6Animations,
   Step7Components,
-  Step9Animations
+  Step9Animations,
 } from "../UI/";
 
 export default function Shelf() {
-  const sideBoardLeft = useRef(null);
-  const sideBoardRight = useRef(null);
-  const topBoardTop = useRef(null);
-  const topBoardBottom = useRef(null);
-  const middleBoards = useRef(null);
+  const left = useRef(null);
+  const right = useRef(null);
+  const top = useRef(null);
+  const bottom = useRef(null);
+  const middle = useRef(null);
   const shelf = useRef(null);
 
   // Step1
@@ -38,35 +41,28 @@ export default function Shelf() {
   return (
     <group ref={shelf} rotation={[0, 0, 0]} position={[0, 0, 0]}>
       {/* Sideboars */}
+      <Step1Components />
       <animated.group position={sideBoardAnimation.position}>
-        <SideLeft
-          ref={sideBoardLeft}
-          opacity={opacitySideLeftAnimation.opacity}
-        >
+        <SideLeft ref={left} opacity={opacitySideLeftAnimation.opacity}>
           <Step2Components />
-          <Step3Animations
-            sideBoardLeft={sideBoardLeft}
-            sideBoardRight={sideBoardRight}
-          />
-          <Step5Animations
-            sideBoardLeft={sideBoardLeft}
-            sideBoardRight={sideBoardRight}
-          />
         </SideLeft>
-        <SideRight ref={sideBoardRight} />
+        <SideRight ref={right} />
       </animated.group>
-      <Step1Components></Step1Components>
 
       {/* Middle */}
       <animated.group position={middlePartsAnimation.position}>
-        <Middle ref={middleBoards} visible={showMiddleParts} />
+        <Middle ref={middle} visible={showMiddleParts} />
       </animated.group>
       <Step7Components />
 
       {/* Top and Bottom */}
-      <Top ref={topBoardTop} visible={false} />
-      <Bottom ref={topBoardBottom} visible={false} />
-      <Step9Animations top={topBoardTop} bottom={topBoardBottom} />
+      <Top ref={top} visible={false} />
+      <Bottom ref={bottom} visible={false} />
+
+      {/* Animations */}
+      <Step3Animations left={left} right={right} />
+      <Step5Animations left={left} right={right} />
+      <Step9Animations top={top} bottom={bottom} />
       <Step11Animations shelf={shelf} />
     </group>
   );

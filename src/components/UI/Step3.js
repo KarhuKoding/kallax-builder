@@ -6,18 +6,18 @@ import { scrollStore } from "../../store/store";
 // TODO flip first left, then right one
 
 const ninetyDeg = Math.PI / 2;
-function Step3Animations({ sideBoardLeft, sideBoardRight }) {
+function Step3Animations({ left, right }) {
   const { sf3 } = scrollStore();
 
   const sf3Interpolated = lerp(ninetyDeg, 0, sf3);
 
   useLayoutEffect(() => {
     // Rotation
-    if (sideBoardLeft.current === null || !sideBoardRight.current === null)
+    if (left.current === null || !right.current === null)
       return;
-      
-    sideBoardLeft.current.rotation.z = sf3Interpolated;
-    sideBoardRight.current.rotation.z = -sf3Interpolated;
+
+    left.current.rotation.z = sf3Interpolated;
+    right.current.rotation.z = -sf3Interpolated;
   }, [sf3]);
 
   return null;
