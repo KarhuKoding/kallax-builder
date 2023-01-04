@@ -5,23 +5,28 @@ import { Canvas } from "@react-three/fiber";
 import PageNumber from "./components/PageNumber/PageNumber";
 import ScrollListener from "./lib/ScrollListener";
 import Shelf from "./components/Shelf/Shelf";
+import { Step11Components } from "./components/UI";
 import "./styles.css";
 
 export default function App() {
   return (
-    <div className="App">
-      <Canvas shadows>
-        <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.6}>
-            <ScrollListener>
-              <Shelf />
-            </ScrollListener>
-          </Stage>
-        </Suspense>
-        <OrbitControls enableZoom={false} />
-      </Canvas>
+    <>
+      <div className="App">
+        <Canvas shadows>
+          <Suspense fallback={null}>
+            <Stage environment="city" intensity={0.6}>
+              <ScrollListener>
+                <Shelf />
+              </ScrollListener>
+            </Stage>
+          </Suspense>
+          <OrbitControls enableZoom={false} />
+        </Canvas>
 
-      <PageNumber />
-    </div>
+        <PageNumber />
+      </div>
+      {/* Confetti */}
+      <Step11Components />
+    </>
   );
 }

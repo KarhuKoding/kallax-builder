@@ -44,11 +44,10 @@ export default function Shelf() {
       {/* Sideboars */}
       <Step1Components />
       <animated.group position={sideBoardAnimation.position}>
-
         <SideLeft ref={left} opacity={opacitySideLeftAnimation.opacity}>
           <ScrewsLeft />
         </SideLeft>
-        
+
         <SideRight ref={right}>
           <ScrewsRight />
         </SideRight>

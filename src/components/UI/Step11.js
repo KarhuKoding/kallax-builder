@@ -1,11 +1,9 @@
 // Move Shelf up and Lift y to half of Shelt Height
-
-// Spinning Animation for the Shelf
-
-// TODO And maybe some Confetti// Show TopAnd Bottom
+//Spinning Animation for the Shelf
+import Confetti from "react-confetti";
 import { useLayoutEffect } from "react";
 import { ninetyDeg } from "../../lib/constants";
-import { lerp } from "../../lib/helperfunctions";
+import { isInbetween, isOne, lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 
 function Step11Animations({ shelf }) {
@@ -24,4 +22,14 @@ function Step11Animations({ shelf }) {
   return null;
 }
 
-export { Step11Animations };
+function Step11Components() {
+  const { sf11 } = scrollStore();
+  return (
+    isInbetween(sf11) ||
+    (isOne(sf11) && (
+      <Confetti width={window.innerWidth} height={window.innerHeight} />
+    ))
+  );
+}
+
+export { Step11Animations, Step11Components };
