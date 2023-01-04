@@ -11,6 +11,7 @@ import {
   Step1Animations,
   Step2Components,
   Step3Animations,
+  Step4Animations,
 } from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
@@ -26,20 +27,17 @@ export default function Shelf() {
 
   const { sf1, sf2, sf3, sf4, sf5, sf6, sf7, sf8 } = scrollStore();
 
-  const [showMiddleParts, setShowMiddleParts] = useState(false);
   const [showTopBottom, setShowTopBottom] = useState(false);
   const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
 
   // Step1
   const sideBoardAnimation = Step1Animations();
+  // Step2
+  // Step3
+  // Step4
+  const { middlePartsAnimation, showMiddleParts } = Step4Animations();
 
   // Opacity SideLeft
-
-  const middlePartsAnimation = useSpring({
-    position: showMiddleParts ? [0, 0, 0] : [0, 0.01, 0],
-    onRest: () => setSideBoardLeftOpacity(true),
-  });
-
   const opacitySideLeftAnimation = useSpring({
     opacity: sideBoardLeftOpacity ? 0.1 : 1,
     config: config.slow,
@@ -52,14 +50,6 @@ export default function Shelf() {
     const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
     const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
 
-    // Stage 3
-
-    if (sf3 > 0 && sf3 < 1) {
-      setShowMiddleParts(true);
-    } else if (sf3 === 0) {
-      setShowMiddleParts(false);
-      setSideBoardLeftOpacity(false);
-    }
     sideBoardLeft.current.position.x = sf4Interpolated;
     sideBoardRight.current.position.x = -sf4Interpolated;
 
