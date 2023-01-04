@@ -4,13 +4,12 @@ import { ninetyDeg } from "../../lib/constants";
 import { isZero, lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 
-// Rotate up 90deg both at same time and move a little bit towards the Shelf
-
 // Show, Rotate and Move TopParts
 function Step9Animations({ top, bottom }) {
   const { sf9 } = scrollStore();
 
-  const sf9Interpolated = lerp(ninetyDeg, 0, sf9);
+  const sf9InterpolatedRotation = lerp(ninetyDeg, 0, sf9);
+  const sf9InterpolatedLocation = lerp(-0.8, -0.69, sf9);
 
   useLayoutEffect(() => {
     // visibility
@@ -23,9 +22,12 @@ function Step9Animations({ top, bottom }) {
     }
     // Rotation
     if (top.current === null || bottom.current === null) return;
-    top.current.rotation.x = -sf9Interpolated;
-    bottom.current.rotation.x = sf9Interpolated;
-  }, [sf9, top, bottom, sf9Interpolated]);
+    top.current.rotation.x = -sf9InterpolatedRotation;
+    bottom.current.rotation.x = sf9InterpolatedRotation;
+
+    top.current.position.z = sf9InterpolatedLocation;
+    bottom.current.position.z = -sf9InterpolatedLocation;
+  }, [sf9, top, bottom, sf9InterpolatedRotation, sf9InterpolatedLocation]);
 
   return null;
 }
