@@ -1,6 +1,8 @@
 //Sideboard-Screws
 //12x Sideboard Screws coming from Top with spinningArrow Arrow
 
+// TODO add Screws for Side Right
+
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";

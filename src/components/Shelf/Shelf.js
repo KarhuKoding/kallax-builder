@@ -6,7 +6,12 @@ import { Bottom, Top, Middle, SideLeft, SideRight } from "./index";
 import { useSpring, animated, config } from "@react-spring/three";
 import CloseUpAnimation from "../UI/CamlockAnimation/index";
 
-import { Step1Components, Step1Animations, Step2Components } from "../UI/";
+import {
+  Step1Components,
+  Step1Animations,
+  Step2Components,
+  Step3Animations,
+} from "../UI/";
 
 const ninetyDeg = Math.PI / 2;
 
@@ -41,18 +46,11 @@ export default function Shelf() {
   });
 
   useLayoutEffect(() => {
-    const sf2Interpolated = lerp(ninetyDeg, 0, sf2);
-
-    const sf3Interpolated = lerp(0.5, 0.18, sf3);
     const sf4Interpolated = lerp(-0.35, -0.165, sf4);
     const sf6Interpolated = lerp(ninetyDeg, 0, sf6);
     const sf8Interpolated = lerp(0, ninetyDeg, sf8);
     const sf8InterpolatedSecondary = lerp(0, 0.7, sf8);
     const sf8InterpolatedFull = lerp(0, Math.PI, sf8);
-
-    // Rotation
-    sideBoardLeft.current.rotation.z = sf2Interpolated;
-    sideBoardRight.current.rotation.z = -sf2Interpolated;
 
     // Stage 3
 
@@ -95,6 +93,10 @@ export default function Shelf() {
           opacity={opacitySideLeftAnimation.opacity}
         >
           <Step2Components />
+          <Step3Animations
+            sideBoardLeft={sideBoardLeft}
+            sideBoardRight={sideBoardRight}
+          />
         </SideLeft>
         <SideRight ref={sideBoardRight} />
       </animated.group>

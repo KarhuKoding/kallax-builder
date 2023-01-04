@@ -1,5 +1,5 @@
-// - Intro
-// Boards coming from Top, then Highlight Position Holes
+//Intro
+//Boards coming from Top, then Highlight Position Holes
 import React, { useLayoutEffect } from "react";
 import { config, useSpring } from "@react-spring/three";
 import { scrollStore, timingStore } from "../../store/store";
