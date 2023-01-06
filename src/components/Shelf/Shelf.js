@@ -62,11 +62,12 @@ export default function Shelf() {
       <Step7Components />
 
       {/* Top and Bottom */}
-
       <Top ref={top} visible={false}>
         <ScrewsTop />
       </Top>
-      <Bottom ref={bottom} visible={false}></Bottom>
+      <Bottom ref={bottom} visible={false}>
+        <ScrewsTop />
+      </Bottom>
 
       {/* Animations */}
       <Step3Animations left={left} right={right} />
