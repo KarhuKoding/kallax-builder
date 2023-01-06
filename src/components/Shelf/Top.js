@@ -6,15 +6,14 @@ export const Top = forwardRef(({ visible = true, ...props }, ref) => {
   return (
     <mesh
       ref={ref}
-      castShadow
-      receiveShadow
       geometry={nodes.Top.geometry}
       position={[0, 0, -0.69]}
       rotation={[-Math.PI / 2, 0, 0]}
       visible={visible}
     >
-      <meshStandardMaterial transparent />
+      <meshStandardMaterial transparent color="red"/>
       <Edges />
+      {props.children}
     </mesh>
   );
 });

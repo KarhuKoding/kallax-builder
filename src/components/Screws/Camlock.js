@@ -15,11 +15,7 @@ export default function Camlock({
         position={position}
         rotation={rotation}
       >
-        <meshStandardMaterial
-          metalness={1}
-          roughness={0.6}
-          color={0xa8a8a8}
-        ></meshStandardMaterial>
+        <meshStandardMaterial color={0x333333}></meshStandardMaterial>
       </mesh>
     </group>
   );

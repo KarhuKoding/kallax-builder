@@ -1,13 +1,13 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Screw({ position }) {
+function Screw({ position }) {
   const { nodes } = useGLTF("/screwSide.glb");
   return (
     <mesh geometry={nodes.ScrewSIde.geometry} position={position}>
       <meshStandardMaterial
         metalness={1}
-        roughness={0.6}
+        roughness={0.5}
         color={0xa8a8a8}
       ></meshStandardMaterial>
     </mesh>

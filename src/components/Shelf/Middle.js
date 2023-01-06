@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { useGLTF, Edges } from "@react-three/drei";
-import Camlock from "../UI/CloseUpAnimation/Camlock";
 import { Step7Animations } from "../UI/";
+import Camlock from "../Screws/Camlock";
 
 const Camlocks = () => {
   const { sf7InterpolatedPosition } = Step7Animations();

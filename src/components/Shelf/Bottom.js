@@ -15,6 +15,7 @@ export const Bottom = forwardRef(({ visible = true, ...props }, ref) => {
     >
       <meshStandardMaterial transparent />
       <Edges />
+      {props.children}
     </mesh>
   );
 });
