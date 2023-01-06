@@ -38,10 +38,13 @@ function Screw() {
   );
 }
 
-export function ScrewsTop({ rotation }) {
+export function ScrewsTop({
+  rotation = [-Math.PI / 2, 0, 0],
+  position = [0, 0, 0],
+}) {
   const group = useRef();
   return (
-    <group ref={group} dispose={null} rotation={rotation}>
+    <group ref={group} dispose={null} rotation={rotation} position={position}>
       <Screw />
     </group>
   );
