@@ -4,9 +4,9 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { isInbetween, isOne, isZero, lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 import { ArrowRound } from "../Arrows/ArrowRound";
-import { Screws } from "../Screws/Screws";
+import { ScrewsSide } from "../Screws/ScrewsSide";
 
-// 12x Screws
+// 12x ScrewsSide
 function Step2Animations() {
   const [showScrews, setShowScrews] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
@@ -17,7 +17,7 @@ function Step2Animations() {
 
   useLayoutEffect(() => {
     const sf1InterpolatedRotation = lerp(0, Math.PI * 2, sf2);
-    const sf1InterpolatedPosition = lerp(0.15, 0, sf2);
+    const sf1InterpolatedPosition = lerp(0.15, 0.008, sf2);
 
     if (isInbetween(sf2)) {
       setShowScrews(true);
@@ -50,13 +50,13 @@ function ScrewsLeft() {
   return (
     <group
       dispose={null}
-      position={[0.15, 0, 0]}
+      position={[0.15, -0.0075, 0.0008]}
       ref={ref}
       rotation={[0, 0, -Math.PI / 2]}
       visible={showScrews}
     >
-      <Screws />
-      <Screws position={[0.3455, 0, 0]} />
+      <ScrewsSide />
+      <ScrewsSide position={[0.344, 0, 0]} />
       <ArrowRound position={[-0.3725, 0, 0.34]} ref={arrow1} />;
     </group>
   );
@@ -68,19 +68,19 @@ function ScrewsRight() {
 
   useEffect(() => {
     if (!showScrews) return;
-    ref.current.position.x = -position;
+    ref.current.position.y = position;
   }, [showScrews, position]);
 
   return (
     <group
       dispose={null}
-      position={[-0.15, 0, 0]}
+      position={[0.393, -0.0075, 0.0008]}
       ref={ref}
-      rotation={[0, 0, -Math.PI / 2]}
+      rotation={[0, 0,0]}
       visible={showScrews}
     >
-      <Screws />
-      <Screws position={[0.3455, 0, 0]} />
+      <ScrewsSide />
+      <ScrewsSide position={[0.344, 0, 0]} />
     </group>
   );
 }

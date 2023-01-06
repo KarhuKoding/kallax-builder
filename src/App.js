@@ -14,13 +14,13 @@ export default function App() {
       <div className="App">
         <Canvas shadows>
           <Suspense fallback={null}>
-            <Stage environment="city" intensity={0.6}>
+            <Stage environment="city" intensity={0.6} adjustCamera>
               <ScrollListener>
                 <Shelf />
               </ScrollListener>
             </Stage>
           </Suspense>
-          <OrbitControls enableZoom={false} />
+          <OrbitControls enableZoom={true} makeDefault />
         </Canvas>
 
         <PageNumber />

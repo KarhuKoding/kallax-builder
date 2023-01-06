@@ -10,7 +10,7 @@ function Step3Animations({ left, right }) {
   const sf3double = sf3 * 2;
 
   const sf3InterpolatedRight =
-    sf3double <= 1 ? lerp(-ninetyDeg, 0, sf3double) : 0;
+    sf3double <= 1 ? lerp(0, ninetyDeg, sf3double) : ninetyDeg;
 
   const sf3InterpolatedLeft =
     sf3double > 1 ? lerp(ninetyDeg, 0, sf3double - 1) : ninetyDeg;
