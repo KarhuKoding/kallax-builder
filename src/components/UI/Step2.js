@@ -17,7 +17,7 @@ function Step2Animations() {
 
   useLayoutEffect(() => {
     const sf1InterpolatedRotation = lerp(0, Math.PI * 2, sf2);
-    const sf1InterpolatedPosition = lerp(0.15, 0.008, sf2);
+    const sf1InterpolatedPosition = lerp(0.15, 0, sf2);
 
     if (isInbetween(sf2)) {
       setShowScrews(true);

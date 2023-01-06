@@ -10,14 +10,16 @@ export default function Camlock({
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Cutter4x001.geometry}
         material={nodes.Cutter4x001.material}
         position={position}
         rotation={rotation}
       >
-        <meshStandardMaterial color={0xffa500}></meshStandardMaterial>
+        <meshStandardMaterial
+          metalness={1}
+          roughness={0.6}
+          color={0xa8a8a8}
+        ></meshStandardMaterial>
       </mesh>
     </group>
   );

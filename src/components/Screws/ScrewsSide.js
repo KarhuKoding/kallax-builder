@@ -5,7 +5,11 @@ export function Screw({ position }) {
   const { nodes } = useGLTF("/screwSide.glb");
   return (
     <mesh geometry={nodes.ScrewSIde.geometry} position={position}>
-      <meshStandardMaterial color={0xffa500}></meshStandardMaterial>
+      <meshStandardMaterial
+        metalness={1}
+        roughness={0.6}
+        color={0xa8a8a8}
+      ></meshStandardMaterial>
     </mesh>
   );
 }
