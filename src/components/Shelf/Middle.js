@@ -5,7 +5,7 @@ import Camlock from "../Screws/Camlock";
 
 const Camlocks = () => {
   const { sf7InterpolatedPosition } = Step7Animations();
-  console.log(sf7InterpolatedPosition);
+
   return (
     <group dispose={null} position={[0, sf7InterpolatedPosition, 0]}>
       <Camlock position={[-0.141, 0, -0.027]} />

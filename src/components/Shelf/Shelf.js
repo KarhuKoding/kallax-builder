@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import { animated } from "@react-spring/three";
 import { Bottom, Middle, SideLeft, SideRight, Top } from "./index";
 
-import { ScrewsTop } from "../Screws/ScrewsTop";
-
 import {
   Step11Animations,
   Step1Animations,
@@ -15,6 +13,7 @@ import {
   Step6Animations,
   Step7Components,
   Step9Animations,
+  Step10Components,
 } from "../UI/";
 
 export default function Shelf() {
@@ -39,6 +38,7 @@ export default function Shelf() {
   // Step8
   // Step9
   // Step10
+  const { ScrewsTop } = Step10Components();
   // Step11
 
   return (
@@ -66,7 +66,7 @@ export default function Shelf() {
         <ScrewsTop />
       </Top>
       <Bottom ref={bottom} visible={false}>
-        <ScrewsTop />
+        {/* <ScrewsTop /> */}
       </Bottom>
 
       {/* Animations */}

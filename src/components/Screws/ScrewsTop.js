@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { forwardRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-function Screw() {
+export function ScrewTop() {
   const { nodes } = useGLTF("/screwTop.glb");
 
   return (
@@ -38,16 +38,17 @@ function Screw() {
   );
 }
 
-export function ScrewsTop({
-  rotation = [-Math.PI / 2, 0, 0],
-  position = [0, 0, 0],
-}) {
-  const group = useRef();
-  return (
-    <group ref={group} dispose={null} rotation={rotation} position={position}>
-      <Screw />
-    </group>
-  );
-}
+export const ScrewsTop = forwardRef(
+  (
+    { rotation = [-Math.PI / 2, 0, 0], position = [0, 0, 0], ...props },
+    ref
+  ) => {
+    return (
+      <group ref={ref} dispose={null} rotation={rotation} position={position}>
+        <ScrewTop />
+      </group>
+    );
+  }
+);
 
 useGLTF.preload("/screwTop.glb");
