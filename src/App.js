@@ -7,7 +7,7 @@ import { Stats } from "@react-three/drei";
 import PageNumber from "./components/PageNumber/PageNumber";
 import ScrollListener from "./lib/ScrollListener";
 import Shelf from "./components/Shelf/Shelf";
-import { Step11Components } from "./components/UI";
+
 import "./styles.css";
 
 export default function App() {
@@ -28,8 +28,6 @@ export default function App() {
 
         <PageNumber />
       </div>
-      {/* Confetti */}
-      <Step11Components />
     </>
   );
 }
