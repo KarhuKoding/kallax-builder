@@ -27,12 +27,4 @@ function Step7Components() {
   return <CloseUpAnimation visible={isVisible}></CloseUpAnimation>;
 }
 
-function Step7Animations() {
-  const { state } = scrollStore();
-  const sf7 = state.sf7;
-  const sf7InterpolatedPosition = lerp(0.08, 0, sf7);
-
-  return { sf7InterpolatedPosition };
-}
-
-export { Step7Components, Step7Animations };
+export { Step7Components };

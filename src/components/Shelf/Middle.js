@@ -1,13 +1,35 @@
-import React, { forwardRef } from "react";
-import { useGLTF, Edges } from "@react-three/drei";
-import { Step7Animations } from "../UI/";
+import { Edges, useGLTF, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import React, { forwardRef, useRef } from "react";
+import {
+  isInbetween,
+  roundNumber,
+  isZero,
+  isOne,
+} from "../../lib/helperfunctions";
 import Camlock from "../Screws/Camlock";
+import { lerp } from "../../lib/helperfunctions";
 
 const Camlocks = () => {
-  const { sf7InterpolatedPosition } = Step7Animations();
+  const ref = useRef();
+  const scroll = useScroll();
+
+  useFrame(() => {
+    if (!ref) return;
+    const sf7 = roundNumber(scroll.range(6 / 11, 1 / 11));
+    const sf7Interpolated = lerp(0.08, 0, sf7);
+
+    console.log("sf7", sf7);
+    if (isInbetween(sf7)) {
+      ref.current.visible = true;
+      ref.current.position.y = sf7Interpolated;
+    } else if (isZero(sf7)) {
+      ref.current.visible = false;
+    }
+  });
 
   return (
-    <group dispose={null} position={[0, sf7InterpolatedPosition, 0]}>
+    <group dispose={null} position={[0, 0.08, 0]} ref={ref} visible={false}>
       <Camlock position={[-0.141, 0, -0.027]} />
       <Camlock position={[0.141, 0, -0.027]} rotation={[0, -Math.PI / 2, 0]} />
       <Camlock position={[-0.141, 0, -0.363]} />
@@ -30,8 +52,8 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
       >
         <meshStandardMaterial transparent />
         <Edges />
-{/* 
-        <Camlocks /> */}
+
+        <Camlocks />
       </mesh>
       <mesh
         castShadow
@@ -43,8 +65,8 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
       >
         <meshStandardMaterial transparent />
         <Edges />
-{/* 
-        <Camlocks /> */}
+
+        <Camlocks />
       </mesh>
       <mesh
         castShadow
@@ -56,8 +78,8 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
       >
         <meshStandardMaterial transparent />
         <Edges />
-{/* 
-        <Camlocks /> */}
+
+        <Camlocks />
       </mesh>
     </group>
   );
