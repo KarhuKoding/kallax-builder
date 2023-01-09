@@ -8,7 +8,8 @@ import { scrollStore } from "../../store/store";
 import { useFrame } from "@react-three/fiber";
 
 function Step11Animations({ shelf }) {
-  const { sf11 } = scrollStore();
+  const { state } = scrollStore();
+  const sf11 = state.sf11;
 
   const sf11Interpolated = lerp(0, ninetyDeg, sf11);
   const sf11InterpolatedSecondary = lerp(0, 0.7, sf11);

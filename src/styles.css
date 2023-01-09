@@ -5,9 +5,19 @@ body {
   background: #1f2028;
 }
 
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+.body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .page_indicator {

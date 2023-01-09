@@ -7,7 +7,8 @@ import { scrollStore } from "../../store/store";
 
 function Step4Animations() {
   const [showMiddleParts, setShowMiddleParts] = useState(false);
-  const { sf4 } = scrollStore();
+  const { state } = scrollStore();
+  const sf4 = state.sf4;
 
   useLayoutEffect(() => {
     if (isInbetween(sf4)) {

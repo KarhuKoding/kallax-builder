@@ -1,16 +1,26 @@
 import { scrollStore } from "../../store/store";
 
 function PageNumber() {
-  const { sf1, sf2, sf3, sf4, sf5, sf6, sf7, sf8, sf9, sf10, sf11 } =
-    scrollStore();
+  const { state } = scrollStore();
+
+  const pageNumber =
+    Math.floor(
+      state.sf1 +
+        state.sf2 +
+        state.sf3 +
+        state.sf4 +
+        state.sf5 +
+        state.sf6 +
+        state.sf7 +
+        state.sf8 +
+        state.sf9 +
+        state.sf10 +
+        state.sf11
+    ) + 1;
 
   return (
     <div className="page_indicator">
-      <h1>
-        {Math.floor(
-          sf1 + sf2 + sf3 + sf4 + sf5 + sf6 + sf7 + sf8 + sf9 + sf10 + sf11
-        ) + 1}
-      </h1>
+      <h1>{pageNumber}</h1>
     </div>
   );
 }

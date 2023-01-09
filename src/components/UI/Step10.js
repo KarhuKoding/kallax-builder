@@ -13,7 +13,8 @@ function Step10Animations() {
   const [position, setPosition] = useState(0);
   const [rotation, setRotation] = useState(0.15);
 
-  const { sf10 } = scrollStore();
+  const { state } = scrollStore();
+  const sf10 = state.sf10;
 
   useLayoutEffect(() => {
     const sf1InterpolatedRotation = lerp(0, Math.PI * 6, sf10);

@@ -8,8 +8,10 @@ import { SidePositionHighlight } from "../PositionHighlight/SidePositionHighligh
 
 // Position Holes Highlight
 function Step1Components() {
-  const { sf1 } = scrollStore();
+  const { state } = scrollStore();
+  const sf1 = state.sf1;
   const { step1Done } = timingStore();
+
 
   return (
     <SidePositionHighlight

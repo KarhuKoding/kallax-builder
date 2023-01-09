@@ -8,7 +8,10 @@ import { lerp } from "../../lib/helperfunctions";
 
 // CloseUp Animation
 function Step7Components() {
-  const { sf7, sf8 } = scrollStore();
+  const { state } = scrollStore();
+  const sf7 = state.sf7;
+  const sf8 = state.sf8;
+
   const [isVisible, setIsVisible] = useState(false);
 
   useLayoutEffect(() => {
@@ -25,7 +28,8 @@ function Step7Components() {
 }
 
 function Step7Animations() {
-  const { sf7 } = scrollStore();
+  const { state } = scrollStore();
+  const sf7 = state.sf7;
   const sf7InterpolatedPosition = lerp(0.08, 0, sf7);
 
   return { sf7InterpolatedPosition };

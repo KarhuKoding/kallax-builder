@@ -11,7 +11,7 @@ export const Top = forwardRef(({ visible = true, ...props }, ref) => {
       rotation={[-Math.PI / 2, 0, 0]}
       visible={visible}
     >
-      <meshStandardMaterial transparent color="red"/>
+      <meshStandardMaterial transparent />
       <Edges />
       {props.children}
     </mesh>

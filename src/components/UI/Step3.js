@@ -6,7 +6,9 @@ import { scrollStore } from "../../store/store";
 
 const ninetyDeg = Math.PI / 2;
 function Step3Animations({ left, right }) {
-  const { sf3 } = scrollStore();
+  const { state } = scrollStore();
+  const sf3 = state.sf3;
+  
   const sf3double = sf3 * 2;
 
   const sf3InterpolatedRight =

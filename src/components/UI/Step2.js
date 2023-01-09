@@ -13,7 +13,8 @@ function Step2Animations() {
   const [position, setPosition] = useState(0);
   const [rotation, setRotation] = useState(0.15);
 
-  const { sf2 } = scrollStore();
+  const { state } = scrollStore();
+  const sf2 = state.sf2;
 
   useLayoutEffect(() => {
     const sf1InterpolatedRotation = lerp(0, Math.PI * 2, sf2);

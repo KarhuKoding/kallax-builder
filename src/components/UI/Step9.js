@@ -6,7 +6,8 @@ import { scrollStore } from "../../store/store";
 
 // Show, Rotate and Move TopParts
 function Step9Animations({ top, bottom }) {
-  const { sf9 } = scrollStore();
+  const { state } = scrollStore();
+  const sf9 = state.sf9;
 
   const sf9InterpolatedRotation = lerp(ninetyDeg, 0, sf9);
   const sf9InterpolatedLocation = lerp(-0.8, -0.69, sf9);

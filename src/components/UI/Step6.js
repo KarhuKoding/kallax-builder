@@ -6,7 +6,10 @@ import { scrollStore } from "../../store/store";
 
 function Step6Animations() {
   const [sideBoardLeftOpacity, setSideBoardLeftOpacity] = useState(false);
-  const { sf6, sf7, sf8 } = scrollStore();
+  const { state } = scrollStore();
+  const sf6 = state.sf6;
+  const sf7 = state.sf7;
+  const sf8 = state.sf8;
 
   useLayoutEffect(() => {
     if (isInbetween(sf6) || isInbetween(sf7) || isInbetween(sf8)) {

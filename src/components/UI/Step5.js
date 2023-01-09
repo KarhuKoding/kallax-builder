@@ -4,7 +4,8 @@ import { lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 
 function Step5Animations({ left, right }) {
-  const { sf5 } = scrollStore();
+  const { state } = scrollStore();
+  const sf5 = state.sf5;
 
   const sf5double = sf5 * 2;
 

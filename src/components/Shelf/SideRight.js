@@ -9,7 +9,7 @@ export const SideRight = forwardRef((props, ref) => {
       ref={ref}
       geometry={nodes.SideRight.geometry}
       material={nodes.SideRight.material}
-      position={[0.35, 0, 0]} // -0.16 default
+      position={[0.35, 0, 0]} 
       rotation={[0, 0, 0]}
     >
       <meshStandardMaterial transparent opacity={1} />
