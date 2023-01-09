@@ -8,23 +8,23 @@ import { lerp } from "../../lib/helperfunctions";
 
 // CloseUp Animation
 function Step7Components() {
-  const { state } = scrollStore();
-  const sf7 = state.sf7;
-  const sf8 = state.sf8;
+  // const { state } = scrollStore();
+  // const sf7 = state.sf7;
+  // const sf8 = state.sf8;
 
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
-  useLayoutEffect(() => {
-    if (isInbetween(sf7) || isInbetween(sf8)) {
-      setIsVisible(true);
-    } else if (isZero(sf7)) {
-      setIsVisible(false);
-    } else if (isOne(sf8)) {
-      setIsVisible(false);
-    }
-  }, [sf7, sf8]);
+  // useLayoutEffect(() => {
+  //   if (isInbetween(sf7) || isInbetween(sf8)) {
+  //     setIsVisible(true);
+  //   } else if (isZero(sf7)) {
+  //     setIsVisible(false);
+  //   } else if (isOne(sf8)) {
+  //     setIsVisible(false);
+  //   }
+  // }, [sf7, sf8]);
 
-  return <CloseUpAnimation visible={isVisible}></CloseUpAnimation>;
+  return <CloseUpAnimation visible={false}></CloseUpAnimation>;
 }
 
 export { Step7Components };

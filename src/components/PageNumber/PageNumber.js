@@ -1,27 +1,24 @@
-import { scrollStore } from "../../store/store";
+import React, { useRef } from "react";
+import { Html, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 function PageNumber() {
-  const { state } = scrollStore();
+  const scroll = useScroll();
+  const ref = useRef();
 
-  const pageNumber =
-    Math.floor(
-      state.sf1 +
-        state.sf2 +
-        state.sf3 +
-        state.sf4 +
-        state.sf5 +
-        state.sf6 +
-        state.sf7 +
-        state.sf8 +
-        state.sf9 +
-        state.sf10 +
-        state.sf11
-    ) + 1;
+  useFrame(() => {
+    if (ref.current === null) return;
+    const test = Math.floor(scroll.offset * 10);
+    console.log("test", ref);
+    ref.current.innerHTML = `${test}`
+  });
 
   return (
-    <div className="page_indicator">
-      <h1>{pageNumber}</h1>
-    </div>
+    <Html fullscreen >
+      <div className="page_indicator">
+        <h1 ref={ref}>{1}</h1>
+      </div>
+    </Html>
   );
 }
 
