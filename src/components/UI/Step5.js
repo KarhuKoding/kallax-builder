@@ -1,27 +1,27 @@
 //Move Sideparts into Middle Parts
-import { useLayoutEffect } from "react";
-import { lerp } from "../../lib/helperfunctions";
-import { scrollStore } from "../../store/store";
+import { lerp, roundNumber } from "../../lib/helperfunctions";
+import { useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 function Step5Animations({ left, right }) {
-  const { state } = scrollStore();
-  const sf5 = state.sf5;
+  const scroll = useScroll();
 
-  const sf5double = sf5 * 2;
+  useFrame(() => {
+    if (!left || !right) return;
 
-  const sf5InterpolatedRight =
-    sf5double <= 1 ? lerp(0.35, 0.165, sf5double) : 0.165;
+    const sf5 = roundNumber(scroll.range(4 / 11, 1 / 11));
 
-  const sf5InterpolatedLeft =
-    sf5double > 1 ? lerp(-0.35, -0.165, sf5double - 1) : -0.35;
+    const sf5double = sf5 * 2;
 
-  useLayoutEffect(() => {
-    // Rotation
-    if (left.current === null || right.current === null) return;
+    const sf5InterpolatedRight =
+      sf5double <= 1 ? lerp(0.35, 0.165, sf5double) : 0.165;
+
+    const sf5InterpolatedLeft =
+      sf5double > 1 ? lerp(-0.35, -0.165, sf5double - 1) : -0.35;
 
     right.current.position.x = sf5InterpolatedRight;
     left.current.position.x = sf5InterpolatedLeft;
-  }, [sf5, left, right, sf5InterpolatedRight, sf5InterpolatedLeft]);
+  });
 
   return null;
 }
