@@ -5,18 +5,17 @@ import {
   Step11Animations,
   Step1Animations,
   Step1Components,
-  Step2Components,
+  ScrewsRight,
+  ScrewsLeft,
   Step3Animations,
   Step4Animations,
   Step5Animations,
   Step6Animations,
   Step7Components,
   Step9Animations,
-  Step10Components,
+  ScrewsTop,
+  ScrewsBottom,
 } from "../UI/";
-import { roundNumber } from "../../lib/helperfunctions";
-
-import { ScrewsRight, ScrewsLeft } from "../UI/Step2";
 
 export default function Shelf() {
   const left = useRef(null);
@@ -39,7 +38,6 @@ export default function Shelf() {
   // Step8
   // Step9
   // Step10
-  const { ScrewsTop, ScrewsBottom } = Step10Components();
   // Step11
 
   return (
