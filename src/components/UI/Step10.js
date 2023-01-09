@@ -16,7 +16,7 @@ function Step10Animations() {
 
   const { sf10 } = scrollStore();
   useLayoutEffect(() => {
-    const sf1InterpolatedRotation = lerp(0, Math.PI * 2, sf10);
+    const sf1InterpolatedRotation = lerp(0, Math.PI * 6, sf10);
 
     const sf1InterpolatedPosition = lerp(-0.2, 0.076, sf10);
 
@@ -38,13 +38,15 @@ function Step10Animations() {
 export function ScrewsTop() {
   const arrow1 = useRef(null);
   const ref = useRef(null);
-  const { position, rotation, showScrews } = Step10Animations();
+  const { position, rotation, showScrews, showArrow } = Step10Animations();
 
   useEffect(() => {
-    if (showScrews) {
-      ref.current.position.z = position;
-    }
-  }, [position, rotation, showScrews]);
+    arrow1.current.visible = showArrow;
+
+    if (!showScrews) return;
+    arrow1.current.rotation.y = rotation;
+    ref.current.position.z = position;
+  }, [arrow1, showArrow, position, rotation, showScrews]);
 
   return (
     <group
@@ -54,6 +56,7 @@ export function ScrewsTop() {
       position={[0, 0, -0.2]}
     >
       <ScrewTop />
+      <ArrowRound position={[0.1845, 0.05, 0.369]} ref={arrow1} />;
     </group>
   );
 }
