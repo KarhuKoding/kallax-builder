@@ -1,18 +1,20 @@
 // Show TopAnd Bottom
-import { useLayoutEffect } from "react";
+import { useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { ninetyDeg } from "../../lib/constants";
-import { isZero, lerp } from "../../lib/helperfunctions";
-import { scrollStore } from "../../store/store";
+import { isZero, lerp, roundNumber } from "../../lib/helperfunctions";
 
 // Show, Rotate and Move TopParts
 function Step9Animations({ top, bottom }) {
-  const { state } = scrollStore();
-  const sf9 = state.sf9;
+  const scroll = useScroll();
 
-  const sf9InterpolatedRotation = lerp(ninetyDeg, 0, sf9);
-  const sf9InterpolatedLocation = lerp(-0.8, -0.69, sf9);
+  useFrame(() => {
+    if (!top || !bottom) return;
+    const sf9 = roundNumber(scroll.range(8 / 11, 1 / 11));
 
-  useLayoutEffect(() => {
+    const sf9InterpolatedRotation = lerp(ninetyDeg, 0, sf9);
+    const sf9InterpolatedLocation = lerp(-0.8, -0.69, sf9);
+
     // visibility
     if (sf9 > 0) {
       top.current.visible = true;
@@ -28,9 +30,10 @@ function Step9Animations({ top, bottom }) {
 
     top.current.position.z = sf9InterpolatedLocation;
     bottom.current.position.z = -sf9InterpolatedLocation;
-  }, [sf9, top, bottom, sf9InterpolatedRotation, sf9InterpolatedLocation]);
+  });
 
   return null;
 }
 
 export { Step9Animations };
+
