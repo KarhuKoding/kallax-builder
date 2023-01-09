@@ -1,32 +1,32 @@
 //Flipping SideBoars
 //Flip Sides 90deg UP
-import { useLayoutEffect } from "react";
-import { lerp } from "../../lib/helperfunctions";
-import { scrollStore } from "../../store/store";
+
+import { lerp, roundNumber } from "../../lib/helperfunctions";
+import { useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 const ninetyDeg = Math.PI / 2;
 function Step3Animations({ left, right }) {
-  const { state } = scrollStore();
-  const sf3 = state.sf3;
-  
-  const sf3double = sf3 * 2;
+  const scroll = useScroll();
 
-  const sf3InterpolatedRight =
-    sf3double <= 1 ? lerp(0, ninetyDeg, sf3double) : ninetyDeg;
+  useFrame(() => {
+    if (!left || !right) return;
 
-  const sf3InterpolatedLeft =
-    sf3double > 1 ? lerp(ninetyDeg, 0, sf3double - 1) : ninetyDeg;
+    const sf3 = roundNumber(scroll.range(2 / 11, 1 / 11));
 
-  useLayoutEffect(() => {
-    // Rotation
-    if (left.current === null || !right.current === null) return;
+    const sf3double = sf3 * 2;
+
+    const sf3InterpolatedRight =
+      sf3double <= 1 ? lerp(0, ninetyDeg, sf3double) : ninetyDeg;
+
+    const sf3InterpolatedLeft =
+      sf3double > 1 ? lerp(ninetyDeg, 0, sf3double - 1) : ninetyDeg;
 
     right.current.rotation.z = sf3InterpolatedRight;
     left.current.rotation.z = sf3InterpolatedLeft;
-  }, [sf3, left, right, sf3InterpolatedRight, sf3InterpolatedLeft]);
+  });
 
   return null;
 }
 
 export { Step3Animations };
-
