@@ -38,7 +38,7 @@ export default function Shelf() {
   // Step8
   // Step9
   // Step10
-  const { ScrewsTop } = Step10Components();
+  const { ScrewsTop, ScrewsBottom } = Step10Components();
   // Step11
 
   return (
@@ -66,7 +66,7 @@ export default function Shelf() {
         <ScrewsTop />
       </Top>
       <Bottom ref={bottom} visible={false}>
-        {/* <ScrewsTop /> */}
+        <ScrewsBottom />
       </Bottom>
 
       {/* Animations */}

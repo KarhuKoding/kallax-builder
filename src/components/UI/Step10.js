@@ -4,7 +4,6 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { isInbetween, isOne, isZero, lerp } from "../../lib/helperfunctions";
 import { scrollStore } from "../../store/store";
 import { ArrowRound } from "../Arrows/ArrowRound";
-import { ScrewsSide } from "../Screws/ScrewsSide";
 import { ScrewTop } from "../Screws/ScrewsTop";
 
 // 8x TopScrews
@@ -15,6 +14,7 @@ function Step10Animations() {
   const [rotation, setRotation] = useState(0.15);
 
   const { sf10 } = scrollStore();
+
   useLayoutEffect(() => {
     const sf1InterpolatedRotation = lerp(0, Math.PI * 6, sf10);
 
@@ -24,9 +24,9 @@ function Step10Animations() {
       setShowScrews(true);
       setRotation(sf1InterpolatedRotation);
       setPosition(sf1InterpolatedPosition);
+      setShowArrow(true);
     } else if (isZero(sf10)) {
       setShowScrews(false);
-      setShowArrow(true);
     } else if (isOne(sf10)) {
       setShowArrow(false);
     }
@@ -36,17 +36,13 @@ function Step10Animations() {
 }
 
 export function ScrewsTop() {
-  const arrow1 = useRef(null);
   const ref = useRef(null);
-  const { position, rotation, showScrews, showArrow } = Step10Animations();
+  const { position, rotation, showScrews } = Step10Animations();
 
   useEffect(() => {
-    arrow1.current.visible = showArrow;
-
     if (!showScrews) return;
-    arrow1.current.rotation.y = rotation;
     ref.current.position.z = position;
-  }, [arrow1, showArrow, position, rotation, showScrews]);
+  }, [position, rotation, showScrews]);
 
   return (
     <group
@@ -56,36 +52,38 @@ export function ScrewsTop() {
       position={[0, 0, -0.2]}
     >
       <ScrewTop />
-      <ArrowRound position={[0.1845, 0.05, 0.369]} ref={arrow1} />;
     </group>
   );
 }
 
 function ScrewsBottom() {
+  const arrow1 = useRef(null);
   const ref = useRef(null);
-  const { showScrews, position } = Step10Animations();
+  const { position, rotation, showScrews, showArrow } = Step10Animations();
 
   useEffect(() => {
+    arrow1.current.visible = showArrow;
+
     if (!showScrews) return;
-    ref.current.position.y = position;
-  }, [showScrews, position]);
+    arrow1.current.rotation.y = rotation;
+    ref.current.position.z = -position;
+  }, [arrow1, showArrow, position, rotation, showScrews]);
 
   return (
     <group
       dispose={null}
-      position={[0.393, -0.0075, 0.0008]}
       ref={ref}
-      rotation={[0, 0, 0]}
-      visible={showScrews}
+      rotation={[Math.PI / 2, 0, 0]}
+      position={[0, 0.396, 0.2]}
     >
-      <ScrewsSide />
-      <ScrewsSide position={[0.344, 0, 0]} />
+      <ScrewTop />
+      <ArrowRound position={[-0.1845, 0.05, 0.0265]} ref={arrow1} />;
     </group>
   );
 }
 
 function Step10Components() {
-  return { ScrewsTop };
+  return { ScrewsTop, ScrewsBottom };
 }
 
 export { Step10Components };
