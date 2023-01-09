@@ -1,52 +1,37 @@
 //Sideboard-Screws
 //12x Sideboard Screws coming from Top with spinningArrow Arrow
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { isInbetween, isOne, isZero, lerp } from "../../lib/helperfunctions";
-import { scrollStore } from "../../store/store";
 import { ArrowRound } from "../Arrows/ArrowRound";
 import { ScrewsSide } from "../Screws/ScrewsSide";
+import { useScroll } from "@react-three/drei";
+import { roundNumber } from "../../lib/helperfunctions";
+import { useFrame } from "@react-three/fiber";
 
 // 12x ScrewsSide
-function Step2Animations() {
-  const [showScrews, setShowScrews] = useState(false);
-  const [showArrow, setShowArrow] = useState(false);
-  const [position, setPosition] = useState(0);
-  const [rotation, setRotation] = useState(0.15);
-
-  const { state } = scrollStore();
-  const sf2 = state.sf2;
-
-  useLayoutEffect(() => {
-    const sf1InterpolatedRotation = lerp(0, Math.PI * 2, sf2);
-    const sf1InterpolatedPosition = lerp(0.15, 0, sf2);
-
-    if (isInbetween(sf2)) {
-      setShowScrews(true);
-      setRotation(sf1InterpolatedRotation);
-      setPosition(sf1InterpolatedPosition);
-    } else if (isZero(sf2)) {
-      setShowScrews(false);
-      setShowArrow(true);
-    } else if (isOne(sf2)) {
-      setShowArrow(false);
-    }
-  }, [sf2]);
-
-  return { showScrews, showArrow, position, rotation };
-}
-
 function ScrewsLeft() {
   const arrow1 = useRef(null);
   const ref = useRef(null);
-  const { showScrews, showArrow, position, rotation } = Step2Animations();
 
-  useEffect(() => {
-    arrow1.current.visible = showArrow;
+  const scroll = useScroll();
 
-    if (!showScrews) return;
-    arrow1.current.rotation.y = rotation;
-    ref.current.position.x = position;
-  }, [arrow1, showArrow, position, rotation, showScrews]);
+  useFrame(() => {
+    if (!arrow1 || !ref) return;
+    const sf2 = roundNumber(scroll.range(1 / 11, 1 / 11));
+
+    const sf2InterpolatedRotation = lerp(0, Math.PI * 2, sf2);
+    const sf2InterpolatedPosition = lerp(0.15, 0, sf2);
+
+    if (isInbetween(sf2)) {
+      ref.current.visible = true;
+      arrow1.current.rotation.y = sf2InterpolatedRotation;
+      ref.current.position.x = sf2InterpolatedPosition;
+    } else if (isZero(sf2)) {
+      arrow1.current.visible = true;
+    } else if (isOne(sf2)) {
+      arrow1.current.visible = false;
+    }
+  });
 
   return (
     <group
@@ -54,10 +39,9 @@ function ScrewsLeft() {
       position={[0.15, -0.0075, 0.0008]}
       ref={ref}
       rotation={[0, 0, -Math.PI / 2]}
-      visible={showScrews}
+      visible={false}
     >
       <ScrewsSide />
-      <ScrewsSide position={[0.344, 0, 0]} />
       <ArrowRound position={[-0.3725, 0, 0.34]} ref={arrow1} />;
     </group>
   );
@@ -65,29 +49,31 @@ function ScrewsLeft() {
 
 function ScrewsRight() {
   const ref = useRef(null);
-  const { showScrews, position } = Step2Animations();
 
-  useEffect(() => {
-    if (!showScrews) return;
-    ref.current.position.y = position;
-  }, [showScrews, position]);
+  const scroll = useScroll();
+
+  useFrame(() => {
+    if (!ref) return;
+
+    const sf2 = roundNumber(scroll.range(1 / 11, 1 / 11));
+    const sf2InterpolatedPosition = lerp(0.15, 0, sf2);
+    if (isInbetween(sf2)) {
+      ref.current.visible = true;
+      ref.current.position.y = sf2InterpolatedPosition;
+    }
+  });
 
   return (
     <group
       dispose={null}
-      position={[0.393, -0.0075, 0.0008]}
+      position={[0.393, 0.15, 0.0008]}
       ref={ref}
       rotation={[0, 0, 0]}
-      visible={showScrews}
+      visible={false}
     >
       <ScrewsSide />
-      <ScrewsSide position={[0.344, 0, 0]} />
     </group>
   );
 }
 
-function Step2Components() {
-  return { ScrewsRight, ScrewsLeft };
-}
-
-export { Step2Components };
+export { ScrewsLeft, ScrewsRight };

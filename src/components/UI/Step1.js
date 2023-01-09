@@ -1,23 +1,30 @@
 //Intro
 //Boards coming from Top, then Highlight Position Holes
 import { config, useSpring } from "@react-spring/three";
-import React from "react";
-import { isInbetween, isZero } from "../../lib/helperfunctions";
-import { scrollStore, timingStore } from "../../store/store";
+import React, { useRef } from "react";
+import { isInbetween, isZero, roundNumber } from "../../lib/helperfunctions";
+import { timingStore } from "../../store/store";
+import { useFrame } from "@react-three/fiber";
 import { SidePositionHighlight } from "../PositionHighlight/SidePositionHighlight";
-
+import { useScroll } from "@react-three/drei";
 // Position Holes Highlight
 function Step1Components() {
-  const { state } = scrollStore();
-  const sf1 = state.sf1;
+  const ref = useRef();
+  const scroll = useScroll();
   const { step1Done } = timingStore();
 
+  useFrame(() => {
+    if (!ref) return;
+    const sf1 = roundNumber(scroll.range(0, 1 / 11));
 
-  return (
-    <SidePositionHighlight
-      visible={step1Done && (isInbetween(sf1) || isZero(sf1))}
-    ></SidePositionHighlight>
-  );
+    if ((isInbetween(sf1) || isZero(sf1)) && step1Done) {
+      ref.current.visible = true;
+    } else {
+      ref.current.visible = false;
+    }
+  });
+
+  return <SidePositionHighlight ref={ref}></SidePositionHighlight>;
 }
 
 // FromTop Animation

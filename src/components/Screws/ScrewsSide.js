@@ -16,10 +16,17 @@ function Screw({ position }) {
 
 export function ScrewsSide({ position = [0, 0, 0] }) {
   return (
-    <group dispose={null} position={position}>
-      <Screw position={[-0.3725, -0.019, 0.338]} />
-      <Screw position={[-0.3725, -0.019, 0]} />
-      <Screw position={[-0.3725, -0.019, -0.341]} />
+    <group>
+      <group position={position}>
+        <Screw position={[-0.3725, -0.019, 0.338]} />
+        <Screw position={[-0.3725, -0.019, 0]} />
+        <Screw position={[-0.3725, -0.019, -0.341]} />
+      </group>
+      <group position={[0.344, 0, 0]}>
+        <Screw position={[-0.3725, -0.019, 0.338]} />
+        <Screw position={[-0.3725, -0.019, 0]} />
+        <Screw position={[-0.3725, -0.019, -0.341]} />
+      </group>
     </group>
   );
 }

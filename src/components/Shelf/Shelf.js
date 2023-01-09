@@ -14,6 +14,9 @@ import {
   Step9Animations,
   Step10Components,
 } from "../UI/";
+import { roundNumber } from "../../lib/helperfunctions";
+
+import { ScrewsRight, ScrewsLeft } from "../UI/Step2";
 
 export default function Shelf() {
   const left = useRef(null);
@@ -26,7 +29,6 @@ export default function Shelf() {
   // Step1
   const sideBoardAnimation = Step1Animations();
   // Step2
-  const { ScrewsLeft, ScrewsRight } = Step2Components();
   // Step3
   // Step4
   const { middlePartsAnimation, showMiddleParts } = Step4Animations();
@@ -46,11 +48,11 @@ export default function Shelf() {
       <Step1Components />
       <animated.group position={sideBoardAnimation.position}>
         <SideLeft ref={left} opacity={opacitySideLeftAnimation.opacity}>
-          {/* <ScrewsLeft /> */}
+          <ScrewsLeft />
         </SideLeft>
 
         <SideRight ref={right}>
-          {/* <ScrewsRight /> */}
+          <ScrewsRight />
         </SideRight>
       </animated.group>
 
@@ -58,14 +60,14 @@ export default function Shelf() {
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middle} visible={showMiddleParts} />
       </animated.group>
-      {/* <Step7Components /> */}
+      <Step7Components />
 
       {/* Top and Bottom */}
       <Top ref={top} visible={false}>
-        {/* <ScrewsTop /> */}
+        <ScrewsTop />
       </Top>
       <Bottom ref={bottom} visible={false}>
-        {/* <ScrewsBottom /> */}
+        <ScrewsBottom />
       </Bottom>
 
       {/* Animations */}

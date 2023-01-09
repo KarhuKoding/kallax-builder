@@ -1,7 +1,6 @@
+import React from "react";
 import { ScrollControls, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import React from "react";
-
 import { scrollStore } from "../store/store";
 import { roundNumber } from "../lib/helperfunctions";
 
@@ -45,7 +44,7 @@ function FetchScrollData() {
       sf11: offsetRange11,
     };
 
-    setState(state);
+    // setState(state);
   });
   return null;
 }
