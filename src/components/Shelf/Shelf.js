@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { animated } from "@react-spring/three";
 import { Bottom, Middle, SideLeft, SideRight, Top } from "./index";
-
 import {
   Step11Animations,
   Step1Animations,
@@ -47,11 +46,11 @@ export default function Shelf() {
       <Step1Components />
       <animated.group position={sideBoardAnimation.position}>
         <SideLeft ref={left} opacity={opacitySideLeftAnimation.opacity}>
-          <ScrewsLeft />
+          {/* <ScrewsLeft /> */}
         </SideLeft>
 
         <SideRight ref={right}>
-          <ScrewsRight />
+          {/* <ScrewsRight /> */}
         </SideRight>
       </animated.group>
 
@@ -59,14 +58,14 @@ export default function Shelf() {
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middle} visible={showMiddleParts} />
       </animated.group>
-      <Step7Components />
+      {/* <Step7Components /> */}
 
       {/* Top and Bottom */}
       <Top ref={top} visible={false}>
-        <ScrewsTop />
+        {/* <ScrewsTop /> */}
       </Top>
       <Bottom ref={bottom} visible={false}>
-        <ScrewsBottom />
+        {/* <ScrewsBottom /> */}
       </Bottom>
 
       {/* Animations */}

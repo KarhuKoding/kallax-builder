@@ -30,8 +30,8 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
       >
         <meshStandardMaterial transparent />
         <Edges />
-
-        <Camlocks />
+{/* 
+        <Camlocks /> */}
       </mesh>
       <mesh
         castShadow
@@ -43,8 +43,8 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
       >
         <meshStandardMaterial transparent />
         <Edges />
-
-        <Camlocks />
+{/* 
+        <Camlocks /> */}
       </mesh>
       <mesh
         castShadow
@@ -56,8 +56,8 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
       >
         <meshStandardMaterial transparent />
         <Edges />
-
-        <Camlocks />
+{/* 
+        <Camlocks /> */}
       </mesh>
     </group>
   );

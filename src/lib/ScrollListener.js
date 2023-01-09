@@ -16,7 +16,6 @@ export default function ScrollListener({ children }) {
 
 function FetchScrollData() {
   const scroll = useScroll();
-
   const { setState } = scrollStore();
 
   useFrame(() => {

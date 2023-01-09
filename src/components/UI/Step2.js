@@ -77,7 +77,7 @@ function ScrewsRight() {
       dispose={null}
       position={[0.393, -0.0075, 0.0008]}
       ref={ref}
-      rotation={[0, 0,0]}
+      rotation={[0, 0, 0]}
       visible={showScrews}
     >
       <ScrewsSide />

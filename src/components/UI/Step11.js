@@ -32,7 +32,8 @@ function Step11Animations({ shelf }) {
 }
 
 function Step11Components() {
-  const { sf11 } = scrollStore();
+  const { state } = scrollStore();
+  const sf11 = state.sf11;
 
   return (
     isInbetween(sf11) ||
