@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-
 export const ArrowRound = forwardRef(
   ({ position = [0, 0, 0], rotation = [0, 0, 0] }, ref) => {
     const { nodes } = useGLTF("/ArrowRound.glb");

@@ -1,12 +1,13 @@
 import { OrbitControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
-
 import { Stats } from "@react-three/drei";
 
 import Shelf from "./components/Shelf/Shelf";
 import { ScrollIcon } from "./components/UI/Scrollicon";
 import ScrollListener from "./lib/ScrollListener";
+
+import { ScrewsTop } from "./components/Screws/ScrewsTop";
 
 import "./styles.css";
 
@@ -20,7 +21,6 @@ export default function App() {
             <Stage environment="city" intensity={0.6} adjustCamera>
               <ScrollListener>
                 <Shelf />
-             
               </ScrollListener>
             </Stage>
           </Suspense>

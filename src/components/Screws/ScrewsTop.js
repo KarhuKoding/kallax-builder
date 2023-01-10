@@ -1,39 +1,27 @@
 import React, { forwardRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { useGLTF, Instances, Instance } from "@react-three/drei";
 
 export function ScrewTop() {
   const { nodes } = useGLTF("/screwTop.glb");
+  const material = new THREE.MeshStandardMaterial({
+    metalness: 1,
+    roughness: 0.5,
+    color: 0xa8a8a8,
+  });
 
   return (
     <>
-      <mesh geometry={nodes.ScrewTop.geometry} position={[0.185, 0, 0.0265]}>
-        <meshStandardMaterial
-          metalness={1}
-          roughness={0.5}
-          color={0xa8a8a8}
-        ></meshStandardMaterial>
-      </mesh>
-      <mesh geometry={nodes.ScrewTop.geometry} position={[0.185, 0, 0.369]}>
-        <meshStandardMaterial
-          metalness={1}
-          roughness={0.5}
-          color={0xa8a8a8}
-        ></meshStandardMaterial>
-      </mesh>
-      <mesh geometry={nodes.ScrewTop.geometry} position={[-0.1845, 0, 0.0265]}>
-        <meshStandardMaterial
-          metalness={1}
-          roughness={0.5}
-          color={0xa8a8a8}
-        ></meshStandardMaterial>
-      </mesh>
-      <mesh geometry={nodes.ScrewTop.geometry} position={[-0.1845, 0, 0.369]}>
-        <meshStandardMaterial
-          metalness={1}
-          roughness={0.5}
-          color={0xa8a8a8}
-        ></meshStandardMaterial>
-      </mesh>
+      <Instances
+        geometry={nodes.ScrewTop.geometry}
+        material={material}
+        limit={4}
+      >
+        <Instance position={[0.185, 0, 0.0265]}></Instance>
+        <Instance position={[0.185, 0, 0.369]}></Instance>
+        <Instance position={[-0.1845, 0, 0.0265]}></Instance>
+        <Instance position={[-0.1845, 0, 0.369]}></Instance>
+      </Instances>
     </>
   );
 }

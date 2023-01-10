@@ -8,7 +8,7 @@ import {
   isOne,
   isZero,
   lerp,
-  roundNumber
+  roundNumber,
 } from "../../lib/helperfunctions";
 import { ArrowRound } from "../Arrows/ArrowRound";
 import { ScrewTop } from "../Screws/ScrewsTop";
@@ -86,4 +86,3 @@ function ScrewsBottom() {
 }
 
 export { ScrewsTop, ScrewsBottom };
-

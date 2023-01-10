@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300");
+
 html,
 body {
   margin: 0;
   overflow: hidden;
   background: #1f2028;
+  font-family: "Source Sans Pro", sans-serif, system-ui;
+  font-weight: 300;
 }
 
 .body::-webkit-scrollbar {
@@ -38,13 +42,13 @@ body {
 /* ScrollIcon */
 .scrollContainer {
   position: absolute;
-  bottom: 25px;
+  bottom: 40px;
   left: 50%;
   z-index: 10;
 }
 .scrollIcon {
-  width: 50px;
-  height: 80px;
+  width: 28px;
+  height: 50px;
   border: 3px solid #fff;
   border-radius: 30px;
   display: flex;

@@ -9,7 +9,6 @@ window.onbeforeunload = function () {
 
 console.warn = () => null;
 
-
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
