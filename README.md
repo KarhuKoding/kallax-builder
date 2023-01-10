@@ -1,6 +1,3 @@
 ## Shelf-Buider
 
-Screwdriver Model from: https://poly.pizza/m/a4vSw5RcfdR
-
-
-- Create Event Emitters for inBetween a Value ? 
+https://www.youtube.com/watch?v=Z2wXbgTIpmU&ab_channel=JohannesW
