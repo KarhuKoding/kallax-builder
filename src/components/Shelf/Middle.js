@@ -1,12 +1,22 @@
-import { Edges, useGLTF, useScroll } from "@react-three/drei";
+import {
+  Edges,
+  useGLTF,
+  useScroll,
+  Instances,
+  Instance,
+} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { forwardRef, useRef } from "react";
 import {
-  isInbetween, isZero, lerp, roundNumber
+  isInbetween,
+  isZero,
+  lerp,
+  roundNumber,
 } from "../../lib/helperfunctions";
-import Camlock from "../Screws/Camlock";
+import Camlocks from "../Screws/Camlocks";
+import * as THREE from "three";
 
-const Camlocks = () => {
+const Screws = () => {
   const ref = useRef();
   const scroll = useScroll();
 
@@ -25,52 +35,45 @@ const Camlocks = () => {
 
   return (
     <group dispose={null} position={[0, 0.08, 0]} ref={ref} visible={false}>
-      <Camlock position={[-0.141, 0, -0.027]} />
-      <Camlock position={[0.141, 0, -0.027]} rotation={[0, -Math.PI / 2, 0]} />
-      <Camlock position={[-0.141, 0, -0.363]} />
-      <Camlock position={[0.141, 0, -0.363]} rotation={[0, -Math.PI / 2, 0]} />
+      <Camlocks />
     </group>
   );
 };
 
+// const Material = () => {
+//   return (
+//     <>
+//       <meshStandardMaterial transparent></meshStandardMaterial>
+//       <Edges />
+//     </>
+//   );
+// };
+
 export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
   const { nodes } = useGLTF("/Middle.glb");
+  const material = new THREE.MeshStandardMaterial({
+    transparent: true,
+  });
+
   return (
-    <group {...props} dispose={null} ref={ref}>
-      <mesh
-        geometry={nodes.Middle2.geometry}
-        position={[0, 0, 0.35]}
-        rotation={[Math.PI / 2, 0, 0]}
-        visible={visible}
-      >
-        <meshStandardMaterial transparent />
-        <Edges />
-
-        <Camlocks />
-      </mesh>
-      <mesh
-        geometry={nodes.Middle3.geometry}
-        position={[0, 0, -0.33]}
-        rotation={[Math.PI / 2, 0, 0]}
-        visible={visible}
-      >
-        <meshStandardMaterial transparent />
-        <Edges />
-
-        <Camlocks />
-      </mesh>
-      <mesh
-        geometry={nodes.Middle1.geometry}
-        position={[0, 0, 0.01]}
-        rotation={[Math.PI / 2, 0, 0]}
-        visible={visible}
-      >
-        <meshStandardMaterial transparent />
-        <Edges />
-
-        <Camlocks />
-      </mesh>
-    </group>
+    <Instances
+      geometry={nodes.Middle2.geometry}
+      material={material}
+      limit={3}
+      visible={visible}
+    >
+      <group {...props} dispose={null} ref={ref}>
+        <Instance position={[0, 0, 0.35]} rotation={[Math.PI / 2, 0, 0]}>
+          <Screws />
+        </Instance>
+        <Instance position={[0, 0, -0.33]} rotation={[Math.PI / 2, 0, 0]}>
+          <Screws />
+        </Instance>
+        <Instance position={[0, 0, 0.01]} rotation={[Math.PI / 2, 0, 0]}>
+          <Screws />
+        </Instance>
+      </group>
+    </Instances>
   );
 });
 
