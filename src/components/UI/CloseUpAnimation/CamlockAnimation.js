@@ -18,13 +18,14 @@ export function CamlockAnimation(props) {
       dispose={null}
       rotation={[0.15, Math.PI / 5, 0]}
     >
-      <directionalLight color={0xffffff} position={[-1, 1, 1]}></directionalLight>
+      <directionalLight
+        color={0xffffff}
+        position={[-1, 1, 1]}
+      ></directionalLight>
 
       <group name="Scene">
         <mesh
           name="Cutter12Right001"
-          castShadow
-          receiveShadow
           geometry={nodes.Cutter12Right001.geometry}
           material={materials.Camlock}
           position={[-0.32, 0.02, 0]}
@@ -64,8 +65,6 @@ export function CamlockAnimation(props) {
         </group>
         <mesh
           name="Middle1001"
-          castShadow
-          receiveShadow
           geometry={nodes.Middle1001.geometry}
           material={nodes.Middle1001.material}
           position={[0, 0, 0.01]}
