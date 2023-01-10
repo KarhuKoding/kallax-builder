@@ -15,6 +15,7 @@ import {
 } from "../../lib/helperfunctions";
 import Camlocks from "../Screws/Camlocks";
 import * as THREE from "three";
+import { MeshStandardMaterial } from "three";
 
 const Screws = () => {
   const ref = useRef();
