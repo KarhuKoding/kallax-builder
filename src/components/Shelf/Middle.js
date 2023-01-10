@@ -1,21 +1,17 @@
 import {
-  Edges,
-  useGLTF,
-  useScroll,
-  Instances,
-  Instance,
+  Instance, Instances, useGLTF,
+  useScroll
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { forwardRef, useRef } from "react";
+import * as THREE from "three";
 import {
   isInbetween,
   isZero,
   lerp,
-  roundNumber,
+  roundNumber
 } from "../../lib/helperfunctions";
 import Camlocks from "../Screws/Camlocks";
-import * as THREE from "three";
-import { MeshStandardMaterial } from "three";
 
 const Screws = () => {
   const ref = useRef();
@@ -40,15 +36,6 @@ const Screws = () => {
     </group>
   );
 };
-
-// const Material = () => {
-//   return (
-//     <>
-//       <meshStandardMaterial transparent></meshStandardMaterial>
-//       <Edges />
-//     </>
-//   );
-// };
 
 export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
   const { nodes } = useGLTF("/Middle.glb");
