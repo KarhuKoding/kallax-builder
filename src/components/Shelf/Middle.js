@@ -2,13 +2,9 @@ import { Edges, useGLTF, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { forwardRef, useRef } from "react";
 import {
-  isInbetween,
-  roundNumber,
-  isZero,
-  isOne,
+  isInbetween, isZero, lerp, roundNumber
 } from "../../lib/helperfunctions";
 import Camlock from "../Screws/Camlock";
-import { lerp } from "../../lib/helperfunctions";
 
 const Camlocks = () => {
   const ref = useRef();
@@ -19,7 +15,6 @@ const Camlocks = () => {
     const sf7 = roundNumber(scroll.range(6 / 11, 1 / 11));
     const sf7Interpolated = lerp(0.08, 0, sf7);
 
-    console.log("sf7", sf7);
     if (isInbetween(sf7)) {
       ref.current.visible = true;
       ref.current.position.y = sf7Interpolated;
@@ -43,8 +38,6 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
   return (
     <group {...props} dispose={null} ref={ref}>
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Middle2.geometry}
         position={[0, 0, 0.35]}
         rotation={[Math.PI / 2, 0, 0]}
@@ -56,8 +49,6 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
         <Camlocks />
       </mesh>
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Middle3.geometry}
         position={[0, 0, -0.33]}
         rotation={[Math.PI / 2, 0, 0]}
@@ -69,8 +60,6 @@ export const Middle = forwardRef(({ visible = true, ...props }, ref) => {
         <Camlocks />
       </mesh>
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Middle1.geometry}
         position={[0, 0, 0.01]}
         rotation={[Math.PI / 2, 0, 0]}

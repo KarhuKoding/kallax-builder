@@ -10,8 +10,6 @@ export function ArrowStraight({
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.ArrowStraight.geometry}
         material={nodes.ArrowStraight.material}
         position={position}

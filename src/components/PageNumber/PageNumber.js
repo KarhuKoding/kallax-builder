@@ -8,8 +8,7 @@ function PageNumber() {
 
   useFrame(() => {
     if (ref.current === null) return;
-    const test = Math.floor(scroll.offset * 10);
-    console.log("test", ref);
+    const test = Math.floor(scroll.offset * 10); 
     ref.current.innerHTML = `${test}`
   });
 

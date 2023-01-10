@@ -3,8 +3,7 @@ import React from "react";
 
 export default function ScrollListener({ children }) {
   return (
-    <ScrollControls pages={11} damping={100}>
-    
+    <ScrollControls pages={11} damping={100}>    
       {children}
     </ScrollControls>
   );

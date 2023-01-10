@@ -67,6 +67,7 @@ function ScrewsBottom() {
     } else if (isZero(sf10)) {
       ref.current.visible = false;
     } else if (isOne(sf10)) {
+      ref.current.position.z = -sf10InterpolatedPosition;
       arrow1.current.visible = false;
     }
   });
