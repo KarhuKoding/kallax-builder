@@ -6,8 +6,9 @@ import { ninetyDeg } from "../../lib/constants";
 import {
   isInbetween,
   isOne,
+  isZero,
   lerp,
-  roundNumber
+  roundNumber,
 } from "../../lib/helperfunctions";
 
 function Step11Animations({ shelf }) {
@@ -27,6 +28,9 @@ function Step11Animations({ shelf }) {
       shelf.current.rotation.z += delta;
     } else if (!isOne(sf11)) {
       shelf.current.rotation.z = 0;
+    } else if (isZero(sf11)) {
+      shelf.current.position.y = 0;
+      shelf.current.rotation.x = 0;
     }
   });
 
@@ -34,4 +38,3 @@ function Step11Animations({ shelf }) {
 }
 
 export { Step11Animations };
-
