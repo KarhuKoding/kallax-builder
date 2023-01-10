@@ -11,18 +11,12 @@ export function ScrewTop() {
   });
 
   return (
-    <>
-      <Instances
-        geometry={nodes.ScrewTop.geometry}
-        material={material}
-        limit={4}
-      >
-        <Instance position={[0.185, 0, 0.0265]}></Instance>
-        <Instance position={[0.185, 0, 0.369]}></Instance>
-        <Instance position={[-0.1845, 0, 0.0265]}></Instance>
-        <Instance position={[-0.1845, 0, 0.369]}></Instance>
-      </Instances>
-    </>
+    <Instances geometry={nodes.ScrewTop.geometry} material={material} limit={4}>
+      <Instance position={[0.185, 0, 0.0265]}></Instance>
+      <Instance position={[0.185, 0, 0.369]}></Instance>
+      <Instance position={[-0.1845, 0, 0.0265]}></Instance>
+      <Instance position={[-0.1845, 0, 0.369]}></Instance>
+    </Instances>
   );
 }
 

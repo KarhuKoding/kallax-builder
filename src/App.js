@@ -7,8 +7,6 @@ import Shelf from "./components/Shelf/Shelf";
 import { ScrollIcon } from "./components/UI/Scrollicon";
 import ScrollListener from "./lib/ScrollListener";
 
-import { ScrewsTop } from "./components/Screws/ScrewsTop";
-
 import "./styles.css";
 
 export default function App() {
