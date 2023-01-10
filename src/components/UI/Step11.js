@@ -19,17 +19,17 @@ function Step11Animations({ shelf }) {
     const sf11 = roundNumber(scroll.range(10 / 11, 1 / 11));
 
     const sf11Interpolated = lerp(0, ninetyDeg, sf11);
-    const sf11InterpolatedSecondary = lerp(0, 0.7, sf11);
+    const sf11InterpolatedSecondary = lerp(0, 0.3, sf11);
 
     if (isInbetween(sf11)) {
       shelf.current.position.y = sf11InterpolatedSecondary;
       shelf.current.rotation.x = sf11Interpolated;
     } else if (isOne(sf11)) {
-      shelf.current.rotation.z += delta;
+      // shelf.current.rotation.z += delta;
     } else if (!isOne(sf11)) {
       shelf.current.rotation.z = 0;
-    } else if (isZero(sf11)) {
-      shelf.current.position.y = 0;
+    }
+    if (isZero(sf11)) {
       shelf.current.rotation.x = 0;
     }
   });

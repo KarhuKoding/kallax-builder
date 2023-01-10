@@ -11,7 +11,6 @@ import {
   Step4Animations,
   Step5Animations,
   Step6Animations,
-  Step7Components,
   Step9Animations,
   ScrewsTop,
   ScrewsBottom,
@@ -58,7 +57,6 @@ export default function Shelf() {
       <animated.group position={middlePartsAnimation.position}>
         <Middle ref={middle} visible={showMiddleParts} />
       </animated.group>
-      <Step7Components />
 
       {/* Top and Bottom */}
       <Top ref={top} visible={false}>

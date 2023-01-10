@@ -1,9 +1,9 @@
 //Move Camlock Screws + Show CloseUp Animation
-import React, { useState, useLayoutEffect } from "react";
-import CloseUpAnimation from "./CloseUpAnimation/index";
-import { isInbetween, isZero, isOne } from "../../lib/helperfunctions";
-import { scrollStore } from "../../store/store";
-import { lerp } from "../../lib/helperfunctions";
+// import React, { useState, useLayoutEffect } from "react";
+// import CloseUpAnimation from "./CloseUpAnimation/index";
+// import { isInbetween, isZero, isOne } from "../../lib/helperfunctions";
+// import { scrollStore } from "../../store/store";
+// import { lerp } from "../../lib/helperfunctions";
 // TODO move Camlock Screws
 
 // CloseUp Animation
@@ -24,7 +24,7 @@ function Step7Components() {
   //   }
   // }, [sf7, sf8]);
 
-  return <CloseUpAnimation visible={false}></CloseUpAnimation>;
+  // return <CloseUpAnimation visible={false}></CloseUpAnimation>;
 }
 
-export { Step7Components };
+

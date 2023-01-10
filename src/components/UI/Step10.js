@@ -23,14 +23,16 @@ function ScrewsTop() {
     if (!ref) return;
     const sf10 = roundNumber(scroll.range(9 / 11, 1 / 11));
 
-    const sf10InterpolatedPosition = lerp(-0.2, 0.085, sf10);
+    const sf10InterpolatedPosition = lerp(-0.2, 0.075, sf10);
 
     if (isInbetween(sf10)) {
       ref.current.visible = true;
       ref.current.position.z = sf10InterpolatedPosition;
     } else if (isZero(sf10)) {
-      ref.current.position.z = 0.085;
       ref.current.visible = false;
+    }
+    if (isOne(sf10)) {
+      ref.current.position.z = 0.075;
     }
   });
 

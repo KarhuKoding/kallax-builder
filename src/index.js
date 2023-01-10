@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
+import { createRoot } from "react-dom/client";
 import App from "./App";
 
 window.onbeforeunload = function () {
@@ -10,9 +9,5 @@ window.onbeforeunload = function () {
 console.warn = () => null;
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  rootElement
-);
+const root = createRoot(rootElement);
+root.render(<App />);
